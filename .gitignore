@@ -1,0 +1,44 @@
+# Build output
+Makefile
+*.o
+moc_*.cpp
+moc_*.h
+qrc_*.cpp
+.qmake.stash
+RPMS/
+installroot/
+build/
+*.rpm
+documentation.list
+translations/*.qm
+
+# Sailfish SDK / Qt Creator local state
+.mb2/
+*.pro.user*
+
+# Python
+__pycache__/
+*.pyc
+
+# Local / private notes — never publish (contain personal or device data)
+CLAUDE.md
+HANDOFF.md
+STATUS.md
+PUBLISH.md
+docs/
+research/
+.claude/
+*.local.sh
+tools/
+
+# Local data / captures
+*.log
+
+# The linked application binary, dropped in the repo root by the qmake build
+/wfscope
+# The ICAP helper binary, built by the spec
+helper/wfscope-icap
+
+# Proprietary SDRplay API headers: may be placed here locally to build the
+# SDRplay source, but must never be committed (SDRplay licence).
+3rdparty/sdrplay_api/

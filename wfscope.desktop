@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+X-Nemo-Application-Type=silica-qt5
+Icon=wfscope
+Exec=wfscope
+Name=wfscope
+
+[X-Sailjail]
+Sandboxing=Disabled

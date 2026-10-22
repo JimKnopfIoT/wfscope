@@ -1,0 +1,3 @@
+libhackrf aus HackRF 2026.01.3 (https://github.com/greatscottgadgets/hackrf),
+unverändert: host/libhackrf/src/hackrf.{c,h}. BSD-3-Clause, siehe LICENSE.
+Wird direkt in wfscope kompiliert (braucht libusb-1.0).
