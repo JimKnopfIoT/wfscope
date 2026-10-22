@@ -2,6 +2,11 @@
 
 **A receive-only spectrum analyser and waterfall for Sailfish OS.**
 
+> 🧪 **Early stage — very experimental.** This is a first public snapshot of a
+> research project. Features are incomplete, levels are uncalibrated, and the
+> Wi-Fi chip source drives undocumented vendor test interfaces. Expect rough
+> edges and breakage; do not rely on it.
+
 wfscope shows a live spectrum with frequency axis and a scrolling waterfall. It
 only **listens** — it never transmits, never connects to anything it observes
 and never interferes. Everything runs on the device; there is no telemetry and
@@ -10,6 +15,17 @@ no cloud component.
 > ⚠️ **Scope & legality.** This is a passive *receiver*. It does not jam, spoof
 > or interfere with anything. Whether and how you may use radio-analysis tools
 > can depend on your jurisdiction — you are responsible for using it lawfully.
+
+## Screenshots
+
+Phone's own Wi-Fi chip (ICAP), 2.4 GHz band with traffic on channel 11, and the
+5 GHz band — spectrum with frequency axis on top, waterfall below (newest row on
+top):
+
+<p>
+  <img src="screenshots/wifi-2g4-waterfall.png" alt="2.4 GHz spectrum and waterfall" width="270">
+  <img src="screenshots/wifi-5g-waterfall.png" alt="5 GHz spectrum and waterfall" width="500">
+</p>
 
 ## Sources
 
@@ -64,7 +80,7 @@ ssh <device> 'pkcon install-local -y /tmp/wfscope-*.aarch64.rpm'
 
 ## Status & responsible use
 
-**Proof of concept / work in progress**, shared **as is** with **no warranty**
+**Early stage, very experimental proof of concept**, shared **as is** with **no warranty**
 of any kind (see the GPLv3). The ICAP path relies on undocumented vendor test
 interfaces and may stop working, or misbehave, with other firmware or driver
 versions. How you use it is your responsibility.
