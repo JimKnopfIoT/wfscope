@@ -47,9 +47,11 @@ top):
   the package; either run wfscope as root or add a polkit rule for
   `/usr/libexec/wfscope/wfscope-icap` yourself, knowing that it lets the
   permitted user switch Wi-Fi into test mode.
-- The vendor Wi-Fi driver has been seen to crash in its own error-recovery
-  path after a TX stall some time after test-mode sessions. Use this source as
-  an experiment, not as something left running unattended.
+- ⚠️ **This source can crash the phone.** Twice, 15–30 minutes after ICAP
+  sessions, the device rebooted: once a kernel BUG in the vendor Wi-Fi driver's
+  error-recovery path after a TX stall, once a hardware-watchdog reset. Until
+  the cause is understood, treat this source as unsafe — do not use it on a
+  device you depend on, and never leave it running unattended.
 - Levels are **uncalibrated** (dB relative, not dBm).
 
 ### HackRF / SDRplay
