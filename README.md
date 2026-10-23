@@ -32,7 +32,7 @@ top):
 | Source | What it gives | Needs |
 |---|---|---|
 | **Synthetic** | demo signals | nothing |
-| **FM radio (internal)** | 87.5–108 MHz band scan (level per 100 kHz channel), **audio** of the tuned station, **RDS station names** (verified by the station's PI code, editable by hand) | a fully wired USB-C cable as antenna (see below); no root, Wi-Fi stays on |
+| **FM radio (internal)** | 87.5–108 MHz band scan (level per 100 kHz channel), **audio** of the tuned station, **RDS station names** (verified by the station's PI code, editable by hand) | an antenna in the USB-C socket: 75 cm wire on the SBU pin or a fully wired USB-C cable (see below); no root, Wi-Fi stays on |
 | **Wi-Fi chip (ICAP)** | 2.4/5 GHz Wi-Fi bands from the phone's own MediaTek connac2x Wi-Fi chip: 32 768 IQ samples per capture at 320 MS/s (102.4 µs snapshots), stepped in 40/80 MHz pieces | root (helper `wfscope-icap`); Wi-Fi is **off** while it runs |
 | **HackRF One / PortaPack** (HackRF mode) | 1 MHz – 6 GHz in sweep mode (20 MHz steps, 78 kHz bins); 2.4 + 5 GHz in one view | USB-OTG, USB access to the device |
 | **SDRplay RSPdx** (optional) | 1 kHz – 2 GHz, 8 MHz per tuning; **panadapter mode** for a transceiver's first IF (e.g. an IF tap board, default 69.450 MHz), axis shown in VFO frequency, mirror switch, fine offset | USB-OTG, the separately installed SDRplay API (`sdrplay_apiService` running) |
@@ -49,9 +49,10 @@ around the Brandenburg Gate in Berlin — no real reception.*
 
 - Slide a peak under the red centre line, or tap it; the line snaps to the
   nearest peak (switchable). The app starts on the last used frequency.
-- **Antenna:** on devices without a headphone jack, a USB-C cable plugged into
-  the phone acts as the FM antenna (see below). Let it hang straight; leave the
-  other end unconnected (a laptop adds noise).
+- **Antenna:** on devices without a headphone jack, the FM antenna goes into
+  the USB-C socket. Best: a 75 cm wire on the SBU pin of a USB-C plug (see
+  below). A fully wired USB-C cable also works; let it hang straight and leave
+  the other end unconnected (a laptop adds noise).
 - While listening the chip cannot scan the band; "Scan" pauses the audio for
   about 10 s and refreshes the band picture.
 - RDS needs a clearly stronger signal than audio. Where no name is received,
@@ -76,6 +77,47 @@ the SBU pads:
   <img src="screenshots/fm-antenna-sbu-2.jpg" alt="Probe on the SBU pad, spectrum shows stations" width="270">
   <img src="screenshots/fm-antenna-sbu-3.jpg" alt="Probe on the SBU pad, close-up" width="270">
 </p>
+
+### DIY FM antenna: 75 cm wire on A8
+
+The best antenna so far is a single wire on a USB-C plug breakout:
+
+- solder a **75 cm** insulated wire to **A8** (SBU1) — a quarter wavelength in
+  the middle of the FM band (λ/4 at 98 MHz ≈ 76 cm, a little shorter for
+  insulated wire). Nothing else on the plug is needed: no CC resistors, no
+  ground wire. Thanks to the SBU switch either plug orientation works;
+- lay the wire out straight.
+
+<p>
+  <img src="screenshots/fm-antenna-wire-a8.jpg" alt="75 cm wire soldered to A8 of a USB-C plug breakout" width="420">
+  <img src="screenshots/fm-antenna-dipole.jpg" alt="Dipole variant: second wire on GND" width="420">
+</p>
+<p>
+  <img src="screenshots/fm-antenna-wire-1.jpg" alt="Phone with the wire antenna, FM band full of stations" width="270">
+  <img src="screenshots/fm-antenna-wire-2.jpg" alt="Wire antenna laid out straight" width="270">
+</p>
+<p>
+  <img src="screenshots/fm-antenna-wire-screen-1.png" alt="FM band with the wire antenna" width="270">
+  <img src="screenshots/fm-antenna-wire-screen-2.png" alt="FM band with the wire antenna, waterfall" width="270">
+</p>
+
+Measured band scans (87.5–108 MHz, 206 channels, same place, phone lying still):
+
+| Antenna | Noise floor | Strongest station | Channels the chip reports as valid |
+|---|---|---|---|
+| 1.3 m USB4 cable to a laptop | −92 dBm | −71 dBm | 3 |
+| **75 cm wire on A8** | **−104 dBm** | **−52 dBm** | **38–39** |
+| dipole: 75 cm on A8 + 75 cm on GND (B12) | −105 dBm | −66 dBm | 32–33 |
+
+- The single wire gives about 50 dB between the strongest station and the
+  noise floor (cable: about 20 dB), and the phone's own interference spikes
+  disappear. Audio is clearly cleaner than with the USB cable.
+- The dipole is **worse** by 4–16 dB on almost every station although both arms
+  were laid out straight. The SBU input is made for a headset wire working
+  against the phone's ground, i.e. a high-impedance input; a centre-fed dipole
+  (about 70 Ω) delivers less voltage there. Skip the ground wire.
+- The driver's antenna switch (short/internal vs. long/headset) makes no
+  difference: the input is simply the SBU pin.
 
 ### Wi-Fi chip (ICAP) — read this first
 
