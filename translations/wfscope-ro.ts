@@ -94,12 +94,12 @@ Conține tinyalsa și libhackrf (licențe BSD). API-ul SDRplay nu face parte din
 <context>
     <name>FmAudio</name>
     <message>
-        <location filename="../src/fmaudio.cpp" line="102"/>
+        <location filename="../src/fmaudio.cpp" line="110"/>
         <source>ALSA mixer not accessible</source>
         <translation>Mixerul ALSA nu este accesibil</translation>
     </message>
     <message>
-        <location filename="../src/fmaudio.cpp" line="152"/>
+        <location filename="../src/fmaudio.cpp" line="160"/>
         <source>FM capture: %1</source>
         <translation>Captură FM: %1</translation>
     </message>

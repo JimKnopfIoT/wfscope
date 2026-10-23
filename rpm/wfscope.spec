@@ -5,7 +5,7 @@ Name:       wfscope
 %define _buildhost reproducible-builder
 
 Summary:    Spectrum analyser and waterfall with FM radio, Wi-Fi bands and external SDRs
-Version:    0.2.1
+Version:    0.2.2
 Release:    1
 License:    GPLv3+
 Group:      Qt/Qt
@@ -53,6 +53,8 @@ install -D -m 0755 helper/wfscope-icap %{buildroot}%{_libexecdir}/%{name}/wfscop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 
 %changelog
+* Fri Oct 23 2026 wfscope contributors - 0.2.2-1
+- FM radio resumes after a phone call (or alarm) instead of staying silent.
 * Fri Oct 23 2026 wfscope contributors - 0.2.1-1
 - About page: the FM antenna runs on the USB-C SBU1/SBU2 pins (A8/B8); a
   cable must carry the SBU wires (fully wired USB 3.x/USB4).

@@ -1,4 +1,4 @@
-# wfscope
+# <img src="icons/128x128/wfscope.png" alt="" width="48" align="absmiddle"> wfscope
 
 **A receive-only spectrum analyser and waterfall for Sailfish OS.**
 

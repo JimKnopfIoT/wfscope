@@ -94,12 +94,12 @@ Vsebuje tinyalsa in libhackrf (licenci BSD). API SDRplay ni del paketa.</transla
 <context>
     <name>FmAudio</name>
     <message>
-        <location filename="../src/fmaudio.cpp" line="102"/>
+        <location filename="../src/fmaudio.cpp" line="110"/>
         <source>ALSA mixer not accessible</source>
         <translation>Mešalnik ALSA ni dostopen</translation>
     </message>
     <message>
-        <location filename="../src/fmaudio.cpp" line="152"/>
+        <location filename="../src/fmaudio.cpp" line="160"/>
         <source>FM capture: %1</source>
         <translation>Zajem FM: %1</translation>
     </message>

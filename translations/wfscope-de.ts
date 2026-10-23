@@ -94,12 +94,12 @@ Enthält tinyalsa und libhackrf (BSD-Lizenzen). Die SDRplay-API ist nicht Teil d
 <context>
     <name>FmAudio</name>
     <message>
-        <location filename="../src/fmaudio.cpp" line="102"/>
+        <location filename="../src/fmaudio.cpp" line="110"/>
         <source>ALSA mixer not accessible</source>
         <translation>ALSA-Mixer nicht zugänglich</translation>
     </message>
     <message>
-        <location filename="../src/fmaudio.cpp" line="152"/>
+        <location filename="../src/fmaudio.cpp" line="160"/>
         <source>FM capture: %1</source>
         <translation>FM-Aufnahme: %1</translation>
     </message>

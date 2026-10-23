@@ -94,12 +94,12 @@ Tartalmazza a tinyalsa és a libhackrf könyvtárat (BSD-licencek). Az SDRplay A
 <context>
     <name>FmAudio</name>
     <message>
-        <location filename="../src/fmaudio.cpp" line="102"/>
+        <location filename="../src/fmaudio.cpp" line="110"/>
         <source>ALSA mixer not accessible</source>
         <translation>Az ALSA-keverő nem érhető el</translation>
     </message>
     <message>
-        <location filename="../src/fmaudio.cpp" line="152"/>
+        <location filename="../src/fmaudio.cpp" line="160"/>
         <source>FM capture: %1</source>
         <translation>FM-rögzítés: %1</translation>
     </message>

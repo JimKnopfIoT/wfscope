@@ -46,12 +46,20 @@ FmAudio::FmAudio(QObject *parent) : QObject(parent)
     audio->setStreamTag(QStringLiteral("media.name"), QStringLiteral("*"));
     m_resources->addResourceObject(audio);
     connect(m_resources, &ResourcePolicy::ResourceSet::resourcesGranted, this, &FmAudio::onGranted);
-    connect(m_resources, &ResourcePolicy::ResourceSet::lostResources, this, [this] {
-        // z. B. eingehender Anruf: Ton anhalten, Wunsch bleibt bestehen
+    // Anruf, Wecker o. Ä.: Ton anhalten, der Wunsch zu hören bleibt bestehen
+    auto pause = [this] {
         m_stop = true;
         if (m_thread.joinable())
             m_thread.join();
         m_active = false;
+    };
+    connect(m_resources, &ResourcePolicy::ResourceSet::lostResources, this, pause);
+    connect(m_resources, &ResourcePolicy::ResourceSet::resourcesReleasedByManager, this, pause);
+    // Danach (z. B. Anruf beendet) gibt die Policy die Ressource nur frei, teilt sie aber nicht
+    // von selbst wieder zu: neu anfordern, onGranted() startet den Ton wieder
+    connect(m_resources, &ResourcePolicy::ResourceSet::resourcesBecameAvailable, this, [this] {
+        if (m_wanted && !m_active)
+            m_resources->acquire();
     });
 }
 
