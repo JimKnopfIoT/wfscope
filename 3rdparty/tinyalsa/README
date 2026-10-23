@@ -1,0 +1,2 @@
+tinyalsa 2.0.0 (https://github.com/tinyalsa/tinyalsa), src/ and include/ unmodified.
+BSD-3-Clause, see LICENSE. Compiled in for the FM radio audio (ALSA mixer and capture).

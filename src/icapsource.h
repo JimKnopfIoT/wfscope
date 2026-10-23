@@ -17,15 +17,17 @@ public:
     explicit IcapSource(QObject *parent = nullptr);
     ~IcapSource() override;
 
-    QString name() const override { return QStringLiteral("WLAN-Chip (ICAP)"); }
+    QString name() const override { return tr("Wi-Fi chip (ICAP)"); }
     QString kind() const override { return QStringLiteral("icap"); }
+    double minMHz() const override { return 2400.0; }
+    double maxMHz() const override { return 7125.0; }
     QVariantList bands() const override
     {
         return QVariantList()
-        << band(QStringLiteral("2,4 GHz"), 2442, 90)
+        << band(tr("2.4 GHz"), 2442, 90)
         << band(QStringLiteral("5 GHz U-NII-1/2"), 5310, 280)
         << band(QStringLiteral("5 GHz U-NII-2C/3"), 5680, 420)
-        << band(QStringLiteral("6 GHz low (ungetestet)"), 6025, 320);
+        << band(tr("6 GHz low (untested)"), 6025, 320);
     }
 
     void start() override;

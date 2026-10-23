@@ -18,7 +18,7 @@ CoverBackground
             width: parent.width
         }
         Label {
-            text: source.running ? "läuft" : "bereit"
+            text: source.running ? qsTr("running") : qsTr("ready")
             color: Theme.secondaryColor
         }
         Label {

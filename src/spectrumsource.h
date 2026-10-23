@@ -15,6 +15,8 @@ class SpectrumSource : public QObject
     Q_PROPERTY(QString name READ name CONSTANT)
     Q_PROPERTY(QString kind READ kind CONSTANT)
     Q_PROPERTY(QVariantList bands READ bands CONSTANT)
+    Q_PROPERTY(double minMHz READ minMHz CONSTANT)
+    Q_PROPERTY(double maxMHz READ maxMHz CONSTANT)
 public:
     explicit SpectrumSource(QObject *parent = nullptr);
 
@@ -26,6 +28,9 @@ public:
     virtual QString kind() const = 0;
     // Liste von {name, center, span} in MHz für die Bandauswahl
     virtual QVariantList bands() const = 0;
+    // gültiger Frequenzbereich der Quelle (MHz), für die manuelle Eingabe
+    virtual double minMHz() const { return 0.0; }
+    virtual double maxMHz() const { return 100000.0; }
 
     void setCenterMHz(double v);
     void setSpanMHz(double v);

@@ -32,9 +32,23 @@ top):
 | Source | What it gives | Needs |
 |---|---|---|
 | **Synthetic** | demo signals | nothing |
+| **FM radio (internal)** | 87.5–108 MHz band scan (level per 100 kHz channel), **audio** of the tuned station, **RDS station names** (verified by the station's PI code, editable by hand) | a fully wired USB-C cable as antenna (see below); no root, Wi-Fi stays on |
 | **Wi-Fi chip (ICAP)** | 2.4/5 GHz Wi-Fi bands from the phone's own MediaTek connac2x Wi-Fi chip: 32 768 IQ samples per capture at 320 MS/s (102.4 µs snapshots), stepped in 40/80 MHz pieces | root (helper `wfscope-icap`); Wi-Fi is **off** while it runs |
 | **HackRF One / PortaPack** (HackRF mode) | 1 MHz – 6 GHz in sweep mode (20 MHz steps, 78 kHz bins); 2.4 + 5 GHz in one view | USB-OTG, USB access to the device |
 | **SDRplay RSPdx** (optional) | 1 kHz – 2 GHz, 8 MHz per tuning; **panadapter mode** for a transceiver's first IF (e.g. an IF tap board, default 69.450 MHz), axis shown in VFO frequency, mirror switch, fine offset | USB-OTG, the separately installed SDRplay API (`sdrplay_apiService` running) |
+
+### FM radio (internal)
+
+- Slide a peak under the red centre line, or tap it; the line snaps to the
+  nearest peak (switchable). The app starts on the last used frequency.
+- **Antenna:** on devices without a headphone jack, a USB-C cable plugged into
+  the phone acts as the FM antenna. It must be a **fully wired** cable (USB 3.x /
+  USB4, e.g. 40 Gbps) — simple charging and USB 2.0 cables do not work. Let it
+  hang straight; leave the other end unconnected (a laptop adds noise).
+- While listening the chip cannot scan the band; "Scan" pauses the audio for
+  about 10 s and refreshes the band picture.
+- RDS needs a clearly stronger signal than audio. Where no name is received,
+  a "?" explains why and lets you enter one.
 
 ### Wi-Fi chip (ICAP) — read this first
 
@@ -93,9 +107,11 @@ AI assisted development
 
 ## License
 
+The user interface is available in 32 languages (selectable on the About page).
+
 Licensed under the **GNU General Public License v3.0 or later** (see
 [`LICENSE`](LICENSE)), with an additional permission under section 7 for
 combining with the SDRplay API (see [`LICENSE-EXCEPTION`](LICENSE-EXCEPTION)).
 Anyone distributing wfscope or a modified version must provide the source code
-under the same terms. The bundled libhackrf keeps its BSD-3-Clause licence, see
+under the same terms. The bundled libhackrf and tinyalsa keep their BSD-3-Clause licences, see
 [`THIRD-PARTY-NOTICES.md`](THIRD-PARTY-NOTICES.md).

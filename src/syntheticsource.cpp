@@ -5,7 +5,7 @@ SyntheticSource::SyntheticSource(QObject *parent) : SpectrumSource(parent)
 {
     m_timer.setInterval(60);
     connect(&m_timer, &QTimer::timeout, this, &SyntheticSource::tick);
-    setStatus(QStringLiteral("synthetisch"));
+    setStatus(tr("synthetic"));
 }
 
 void SyntheticSource::start()

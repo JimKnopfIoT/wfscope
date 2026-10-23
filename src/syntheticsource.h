@@ -10,12 +10,12 @@ class SyntheticSource : public SpectrumSource
 public:
     explicit SyntheticSource(QObject *parent = nullptr);
 
-    QString name() const override { return QStringLiteral("Synthetisch (Demo)"); }
+    QString name() const override { return tr("Synthetic (demo)"); }
     QString kind() const override { return QStringLiteral("synthetic"); }
     QVariantList bands() const override
     {
         return QVariantList()
-        << band(QStringLiteral("2,4 GHz"), 2442, 90)
+        << band(tr("2.4 GHz"), 2442, 90)
         << band(QStringLiteral("5 GHz U-NII-1/2"), 5310, 280);
     }
 

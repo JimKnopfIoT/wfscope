@@ -42,7 +42,7 @@ SdrplaySource::SdrplaySource(QObject *parent) : SpectrumSource(parent)
         if (m_running && !m_panadapter)
             planChunks();
     });
-    setStatus(QStringLiteral("RSPdx bereit — Gerät per USB-OTG anstecken"));
+    setStatus(tr("RSPdx ready — connect the device via USB OTG"));
 }
 
 SdrplaySource::~SdrplaySource()
@@ -62,7 +62,7 @@ bool SdrplaySource::loadApi()
         if ((m_lib = dlopen(p, RTLD_NOW | RTLD_LOCAL)))
             break;
     if (!m_lib) {
-        setStatus(QStringLiteral("SDRplay API nicht installiert (libsdrplay_api.so.3)"));
+        setStatus(tr("SDRplay API not installed (libsdrplay_api.so.3)"));
         return false;
     }
     Api *a = new Api;
@@ -87,7 +87,7 @@ bool SdrplaySource::loadApi()
         delete a;
         dlclose(m_lib);
         m_lib = nullptr;
-        setStatus(QStringLiteral("SDRplay API unvollständig (falsche Version?)"));
+        setStatus(tr("SDRplay API incomplete (wrong version?)"));
         return false;
     }
     m_api = a;
@@ -100,7 +100,7 @@ void SdrplaySource::start()
         return;
     sdrplay_api_ErrT err = m_api->Open();
     if (err != sdrplay_api_Success) {
-        setStatus(QStringLiteral("SDRplay-Dienst nicht erreichbar (sdrplay_apiService läuft?)"));
+        setStatus(tr("SDRplay service unreachable (is sdrplay_apiService running?)"));
         return;
     }
     m_api->LockDeviceApi();
@@ -118,7 +118,7 @@ void SdrplaySource::start()
     if (pick < 0) {
         m_api->UnlockDeviceApi();
         m_api->Close();
-        setStatus(QStringLiteral("kein SDRplay-Gerät gefunden (OTG-Kabel?)"));
+        setStatus(tr("No SDRplay device found (OTG cable?)"));
         return;
     }
     m_device = devs[pick];
@@ -172,9 +172,9 @@ void SdrplaySource::start()
     }
     setRunning(true);
     setStatus(m_panadapter
-              ? QStringLiteral("RSPdx Panadapter · ZF %1 MHz · VFO %2 MHz")
+              ? tr("RSPdx panadapter · IF %1 MHz · VFO %2 MHz")
                     .arg(m_ifMHz, 0, 'f', 3).arg(m_vfoMHz, 0, 'f', 3)
-              : QStringLiteral("RSPdx empfängt · %1 Schritt(e)").arg(m_chunkMHz.size()));
+              : tr("RSPdx receiving · %1 step(s)").arg(m_chunkMHz.size()));
 }
 
 void SdrplaySource::stop()
@@ -185,7 +185,7 @@ void SdrplaySource::stop()
         m_api->Close();
         m_haveDevice = false;
         m_params = nullptr;
-        setStatus(QStringLiteral("RSPdx gestoppt"));
+        setStatus(tr("RSPdx stopped"));
     }
     setRunning(false);
 }
@@ -334,7 +334,7 @@ void SdrplaySource::onDeviceEvent(int what)
                       sdrplay_api_Update_Ext1_None);
     } else if (what == sdrplay_api_DeviceRemoved) {
         stop();
-        setStatus(QStringLiteral("RSPdx wurde abgezogen"));
+        setStatus(tr("RSPdx was unplugged"));
     }
 }
 
@@ -398,7 +398,14 @@ void SdrplaySource::onFrame(const QVector<float> &psd)
         return;
     }
     if (m_chunkMHz.size() <= 1) {
-        emit sweep(cut, m_chunkMHz.value(0, m_centerMHz), usableMHz());
+        // gezoomt: auf die gewünschte Spanne um die Tunerfrequenz zuschneiden
+        if (m_spanMHz < usableMHz()) {
+            const int k = qMax(16, int(cut.size() * m_spanMHz / usableMHz()));
+            cut = cut.mid((cut.size() - k) / 2, k);
+            emit sweep(cut, m_chunkMHz.value(0, m_centerMHz), m_spanMHz);
+        } else {
+            emit sweep(cut, m_chunkMHz.value(0, m_centerMHz), usableMHz());
+        }
         return;
     }
     m_chunkPsd[m_chunk] = cut;

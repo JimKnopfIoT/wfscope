@@ -31,15 +31,17 @@ public:
 
     QString name() const override { return QStringLiteral("SDRplay RSPdx"); }
     QString kind() const override { return QStringLiteral("sdrplay"); }
+    double minMHz() const override { return 0.001; }
+    double maxMHz() const override { return 2000.0; }
     QVariantList bands() const override
     {
         return QVariantList()
-            << band(QStringLiteral("UKW 87,5–108"), 97.75, 20.5)
-            << band(QStringLiteral("Flugfunk 118–137"), 127.5, 19)
+            << band(tr("FM 87.5–108"), 97.75, 20.5)
+            << band(tr("Airband 118–137"), 127.5, 19)
             << band(QStringLiteral("2 m (144–146)"), 145, 2)
             << band(QStringLiteral("70 cm (430–440)"), 435, 10)
-            << band(QStringLiteral("40 m (7,0–7,2)"), 7.1, 0.2)
-            << band(QStringLiteral("20 m (14,0–14,35)"), 14.175, 0.35);
+            << band(tr("40 m (7.0–7.2)"), 7.1, 0.2)
+            << band(tr("20 m (14.0–14.35)"), 14.175, 0.35);
     }
 
     bool panadapter() const { return m_panadapter; }

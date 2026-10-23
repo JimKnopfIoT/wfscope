@@ -23,15 +23,17 @@ public:
 
     QString name() const override { return QStringLiteral("HackRF / PortaPack"); }
     QString kind() const override { return QStringLiteral("hackrf"); }
+    double minMHz() const override { return 1.0; }
+    double maxMHz() const override { return 6000.0; }
     QVariantList bands() const override
     {
         return QVariantList()
-            << band(QStringLiteral("2,4 GHz WLAN"), 2450, 100)
-            << band(QStringLiteral("5 GHz WLAN"), 5525, 750)
-            << band(QStringLiteral("2,4 + 5 GHz (2,4–5,9)"), 4150, 3500)
-            << band(QStringLiteral("UKW 87,5–108"), 97.75, 20.5)
+            << band(tr("2.4 GHz Wi-Fi"), 2450, 100)
+            << band(tr("5 GHz Wi-Fi"), 5525, 750)
+            << band(tr("2.4 + 5 GHz (2.4–5.9)"), 4150, 3500)
+            << band(tr("FM 87.5–108"), 97.75, 20.5)
             << band(QStringLiteral("2 m / 70 cm (140–440)"), 290, 300)
-            << band(QStringLiteral("Übersicht 1–6000"), 3000.5, 5999);
+            << band(tr("Overview 1–6000"), 3000.5, 5999);
     }
 
     int lnaGain() const { return m_lna; }

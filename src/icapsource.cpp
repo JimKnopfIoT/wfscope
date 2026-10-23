@@ -75,7 +75,7 @@ IcapSource::IcapSource(QObject *parent) : SpectrumSource(parent)
         if (m_running)
             planChunks();
     });
-    setStatus(QStringLiteral("ICAP bereit — Start schaltet das WLAN ab"));
+    setStatus(tr("ICAP ready — starting switches Wi-Fi off"));
 }
 
 IcapSource::~IcapSource()
@@ -98,14 +98,14 @@ void IcapSource::start()
     if (helper.isEmpty())
         helper = QString::fromLatin1(kHelperPath);
     if (!QFile::exists(helper)) {
-        setStatus(QStringLiteral("Helfer fehlt: ") + helper);
+        setStatus(tr("Helper missing: %1").arg(helper));
         return;
     }
     m_buf.clear();
     m_errors = 0;
     m_stopping = false;
     planChunks();
-    setStatus(QStringLiteral("ICAP startet (WLAN aus) …"));
+    setStatus(tr("ICAP starting (Wi-Fi off) …"));
     if (geteuid() == 0)
         m_proc.start(helper, QStringList());
     else
@@ -120,7 +120,7 @@ void IcapSource::stop()
         return;
     }
     m_stopping = true;
-    setStatus(QStringLiteral("Stoppe, WLAN wird wiederhergestellt …"));
+    setStatus(tr("Stopping, restoring Wi-Fi …"));
     m_proc.write("quit\n");
     m_proc.closeWriteChannel();
 }
@@ -137,7 +137,12 @@ void IcapSource::planChunks()
     const int n = qMax(1, int(qCeil(m_spanMHz / usable)));
     for (int i = 0; i < n; ++i) {
         const double want = lo + usable * (i + 0.5) * (m_spanMHz / (usable * n));
-        channelFor(qBound(lo, want, hi), &ch, &band);
+        const double f = qBound(lo, want, hi);
+        // nur WLAN-Bänder: dazwischen gibt es keine gültigen Kanäle
+        const bool inWifi = (f >= 2400.0 && f <= 2500.0) || (f >= 5150.0 && f <= 7125.0);
+        if (!inWifi)
+            continue;
+        channelFor(f, &ch, &band);
         Chunk c;
         c.channel = ch;
         c.bw = bw;
@@ -150,6 +155,8 @@ void IcapSource::planChunks()
     }
     m_next = 0;
     m_sweepStartMs = QDateTime::currentMSecsSinceEpoch();
+    if (m_chunks.isEmpty())
+        setStatus(tr("The range contains no Wi-Fi band (2.4 / 5 / 6 GHz)"));
 }
 
 void IcapSource::requestNext()
@@ -166,7 +173,7 @@ void IcapSource::onErrorOutput()
 {
     const QByteArray err = m_proc.readAllStandardError();
     if (err.contains("bereit")) {
-        setStatus(QStringLiteral("ICAP aktiv (WLAN aus)"));
+        setStatus(tr("ICAP active (Wi-Fi off)"));
         requestNext();
     } else if (!err.trimmed().isEmpty() && !err.contains("wiederhergestellt")) {
         setStatus(QString::fromLocal8Bit(err.trimmed()));
@@ -180,7 +187,7 @@ void IcapSource::onReadyRead()
         FrameHdr h;
         memcpy(&h, m_buf.constData(), sizeof(h));
         if (memcmp(h.magic, "WFIQ", 4) != 0) {
-            setStatus(QStringLiteral("Protokollfehler vom Helfer"));
+            setStatus(tr("Protocol error from the helper"));
             m_buf.clear();
             stop();
             return;
@@ -206,7 +213,7 @@ void IcapSource::handleFrame(quint32 channel, quint16 status, const QByteArray &
     }
     if (status != 0 || iq.isEmpty()) {
         ++m_errors;
-        setStatus(QStringLiteral("Capture Kanal %1: %2")
+        setStatus(tr("Capture channel %1: %2")
                       .arg(m_chunks.at(m_next).channel).arg(QLatin1String(statusText(status))));
     } else {
         m_chunks[m_next].psd = psdFromIq(iq);
@@ -276,9 +283,9 @@ void IcapSource::emitSweep(bool fullCycle)
     const qint64 now = QDateTime::currentMSecsSinceEpoch();
     const double secs = qMax<qint64>(1, now - m_sweepStartMs) / 1000.0;
     m_sweepStartMs = now;
-    setStatus(QStringLiteral("ICAP aktiv (WLAN aus) · %1 Stücke · %2 s/Durchlauf%3")
+    setStatus(tr("ICAP active (Wi-Fi off) · %1 chunks · %2 s/sweep%3")
                   .arg(m_chunks.size()).arg(secs, 0, 'f', 1)
-                  .arg(m_errors ? QStringLiteral(" · %1 Fehler").arg(m_errors) : QString()));
+                  .arg(m_errors ? tr(" · %1 errors").arg(m_errors) : QString()));
     emit sweep(out, m_centerMHz, m_spanMHz);
 }
 
@@ -286,12 +293,12 @@ void IcapSource::onFinished(int code, QProcess::ExitStatus st)
 {
     setRunning(false);
     if (m_stopping && code == 0)
-        setStatus(QStringLiteral("gestoppt, WLAN wiederhergestellt"));
+        setStatus(tr("Stopped, Wi-Fi restored"));
     else if (code == 126 || code == 127)
-        setStatus(QStringLiteral("pkexec: nicht berechtigt (polkit-Regel installiert?)"));
+        setStatus(tr("pkexec: not authorized (polkit rule installed?)"));
     else if (st == QProcess::CrashExit)
-        setStatus(QStringLiteral("Helfer abgestürzt — Watchdog stellt WLAN wieder her"));
+        setStatus(tr("Helper crashed — the watchdog restores Wi-Fi"));
     else
-        setStatus(QStringLiteral("Helfer beendet (Code %1)").arg(code));
+        setStatus(tr("Helper exited (code %1)").arg(code));
     m_stopping = false;
 }

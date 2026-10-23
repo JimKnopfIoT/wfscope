@@ -22,7 +22,7 @@ HackRfSource::HackRfSource(QObject *parent) : SpectrumSource(parent)
             startSweep();
         }
     });
-    setStatus(QStringLiteral("HackRF bereit — Gerät per USB-OTG anstecken"));
+    setStatus(tr("HackRF ready — connect the device via USB OTG"));
 }
 
 HackRfSource::~HackRfSource()
@@ -87,11 +87,11 @@ void HackRfSource::start()
     if (r != HACKRF_SUCCESS) {
         m_dev = nullptr;
         if (r == HACKRF_ERROR_NOT_FOUND)
-            setStatus(QStringLiteral("kein HackRF gefunden (OTG-Kabel, Strom?)"));
+            setStatus(tr("No HackRF found (OTG cable, power?)"));
         else if (r == HACKRF_ERROR_LIBUSB)
-            setStatus(QStringLiteral("HackRF: kein USB-Zugriff (udev-Regel fehlt? als root testen)"));
+            setStatus(tr("HackRF: no USB access (udev rule missing? try as root)"));
         else
-            setStatus(QStringLiteral("HackRF öffnen: %1").arg(QLatin1String(hackrf_error_name(hackrf_error(r)))));
+            setStatus(tr("Opening HackRF: %1").arg(QLatin1String(hackrf_error_name(hackrf_error(r)))));
         return;
     }
     hackrf_set_sample_rate_manual(m_dev, kSampleRateHz, 1);
@@ -111,7 +111,7 @@ void HackRfSource::stop()
         hackrf_stop_rx(m_dev);
         hackrf_close(m_dev);
         m_dev = nullptr;
-        setStatus(QStringLiteral("HackRF gestoppt"));
+        setStatus(tr("HackRF stopped"));
     }
     if (m_libInit) {
         hackrf_exit();
@@ -145,10 +145,10 @@ bool HackRfSource::startSweep()
     if (r == HACKRF_SUCCESS)
         r = hackrf_start_rx_sweep(m_dev, &HackRfSource::rxCallback, this);
     if (r != HACKRF_SUCCESS) {
-        setStatus(QStringLiteral("HackRF-Sweep: %1").arg(QLatin1String(hackrf_error_name(hackrf_error(r)))));
+        setStatus(tr("HackRF sweep: %1").arg(QLatin1String(hackrf_error_name(hackrf_error(r)))));
         return false;
     }
-    setStatus(QStringLiteral("HackRF sweept %1–%2 MHz · LNA %3 · VGA %4%5")
+    setStatus(tr("HackRF sweeping %1–%2 MHz · LNA %3 · VGA %4%5")
                   .arg(fMin).arg(fMax).arg(m_lna).arg(m_vga)
                   .arg(m_amp ? QStringLiteral(" · Amp") : QString()));
     return true;
