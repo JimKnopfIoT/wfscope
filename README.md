@@ -39,16 +39,43 @@ top):
 
 ### FM radio (internal)
 
+<p>
+  <img src="screenshots/fm-demo-portrait.png" alt="FM band with station names, portrait" width="270">
+  <img src="screenshots/fm-demo-landscape.png" alt="FM band with station names, landscape" width="560">
+</p>
+
+*Screenshots in demo mode (`WFSCOPE_FM_DEMO=1`): a typical FM band as seen
+around the Brandenburg Gate in Berlin — no real reception.*
+
 - Slide a peak under the red centre line, or tap it; the line snaps to the
   nearest peak (switchable). The app starts on the last used frequency.
 - **Antenna:** on devices without a headphone jack, a USB-C cable plugged into
-  the phone acts as the FM antenna. It must be a **fully wired** cable (USB 3.x /
-  USB4, e.g. 40 Gbps) — simple charging and USB 2.0 cables do not work. Let it
-  hang straight; leave the other end unconnected (a laptop adds noise).
+  the phone acts as the FM antenna (see below). Let it hang straight; leave the
+  other end unconnected (a laptop adds noise).
 - While listening the chip cannot scan the band; "Scan" pauses the audio for
   about 10 s and refreshes the band picture.
 - RDS needs a clearly stronger signal than audio. Where no name is received,
   a "?" explains why and lets you enter one.
+
+### FM antenna on the USB-C SBU pins
+
+The FM antenna input is wired to the **SBU1/SBU2 pins (A8/B8)** of the USB-C
+socket — the side-band pins that analogue USB-C headsets also use. A cable
+therefore only works as an antenna if it carries the SBU wires:
+
+- **works:** fully wired USB 3.x / USB4 cables (e.g. 40 Gbps, with e-marker);
+  tested with a 1.3 m USB4 cable;
+- **does not work:** simple charging cables and USB 2.0 cables — they have no
+  SBU wires.
+
+Found with a USB-C breakout board and a probe (acting as a short antenna) on
+the SBU pads:
+
+<p>
+  <img src="screenshots/fm-antenna-sbu-1.jpg" alt="Probe on the SBU pad of a USB-C breakout board" width="270">
+  <img src="screenshots/fm-antenna-sbu-2.jpg" alt="Probe on the SBU pad, spectrum shows stations" width="270">
+  <img src="screenshots/fm-antenna-sbu-3.jpg" alt="Probe on the SBU pad, close-up" width="270">
+</p>
 
 ### Wi-Fi chip (ICAP) — read this first
 

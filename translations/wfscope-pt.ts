@@ -30,11 +30,11 @@
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="63"/>
-        <source>• A USB-C cable plugged into the phone acts as the antenna. It has to be a fully wired cable (USB 3.x/USB4, e.g. 40 Gbps); simple charging and USB 2.0 cables do not work. Tested: 1.3 m USB4 cable with e-marker.
+        <source>• A USB-C cable plugged into the phone acts as the antenna. The antenna signal runs on the SBU1/SBU2 pins (A8/B8), so the cable must carry the SBU wires: fully wired USB 3.x/USB4 cables do (e.g. 40 Gbps), simple charging and USB 2.0 cables do not. Tested: 1.3 m USB4 cable with e-marker.
 • Let the cable hang straight; coiled up it receives much worse.
 • Leave the other end free: a connected laptop adds a lot of noise.
 • Without such a cable reception is very weak; station names (RDS) need a good signal.</source>
-        <translation>• Um cabo USB-C ligado ao telemóvel funciona como antena. Tem de ser um cabo com cablagem completa (USB 3.x/USB4, p. ex. 40 Gbps); cabos simples de carregamento e cabos USB 2.0 não funcionam. Testado: cabo USB4 de 1,3 m com e-marker.
+        <translation>• Um cabo USB-C ligado ao telemóvel funciona como antena. O sinal da antena passa pelos pinos SBU1/SBU2 (A8/B8), por isso o cabo tem de ter os fios SBU: os cabos USB 3.x/USB4 com cablagem completa têm-nos (p. ex. 40 Gbps), os cabos simples de carregamento e os cabos USB 2.0 não. Testado: cabo USB4 de 1,3 m com e-marker.
 • Deixe o cabo pendurado e esticado; enrolado recebe muito pior.
 • Deixe a outra ponta livre: um portátil ligado acrescenta muito ruído.
 • Sem um cabo assim a receção é muito fraca; os nomes das estações (RDS) precisam de um bom sinal.</translation>
@@ -107,47 +107,48 @@ Contém tinyalsa e libhackrf (licenças BSD). A API da SDRplay não faz parte do
 <context>
     <name>FmSource</name>
     <message>
-        <location filename="../src/fmsource.cpp" line="123"/>
+        <location filename="../src/fmsource.cpp" line="126"/>
         <source>Listening %1 MHz%3 · %2 dBm</source>
         <translation>A ouvir %1 MHz%3 · %2 dBm</translation>
     </message>
     <message>
-        <location filename="../src/fmsource.cpp" line="137"/>
+        <location filename="../src/fmsource.cpp" line="140"/>
         <source>Internal FM ready — built-in short antenna</source>
         <translation>FM interno pronto — antena curta incorporada</translation>
     </message>
     <message>
-        <location filename="../src/fmsource.cpp" line="310"/>
+        <location filename="../src/fmsource.cpp" line="342"/>
         <source>The FM chip cannot be powered on</source>
         <translation>Não é possível ligar o chip FM</translation>
     </message>
     <message>
-        <location filename="../src/fmsource.cpp" line="321"/>
+        <location filename="../src/fmsource.cpp" line="327"/>
+        <location filename="../src/fmsource.cpp" line="353"/>
         <source>Internal FM scanning …</source>
         <translation>FM interno a pesquisar …</translation>
     </message>
     <message>
-        <location filename="../src/fmsource.cpp" line="349"/>
+        <location filename="../src/fmsource.cpp" line="381"/>
         <source>Internal FM stopped</source>
         <translation>FM interno parado</translation>
     </message>
     <message>
-        <location filename="../src/fmsource.cpp" line="589"/>
+        <location filename="../src/fmsource.cpp" line="621"/>
         <source>FM measurement failed (%1)</source>
         <translation>Falha na medição FM (%1)</translation>
     </message>
     <message>
-        <location filename="../src/fmsource.cpp" line="605"/>
+        <location filename="../src/fmsource.cpp" line="637"/>
         <source>Internal FM · %1 channels · %2 s/sweep · %3</source>
         <translation>FM interno · %1 canais · %2 s/varrimento · %3</translation>
     </message>
     <message>
-        <location filename="../src/fmsource.cpp" line="608"/>
+        <location filename="../src/fmsource.cpp" line="640"/>
         <source>short antenna</source>
         <translation>antena curta</translation>
     </message>
     <message>
-        <location filename="../src/fmsource.cpp" line="608"/>
+        <location filename="../src/fmsource.cpp" line="640"/>
         <source>headset antenna</source>
         <translation>antena dos auscultadores</translation>
     </message>
@@ -429,179 +430,179 @@ Contém tinyalsa e libhackrf (licenças BSD). A API da SDRplay não faz parte do
         <translation>Largura %1 · use dois dedos no espetro para ampliar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="537"/>
+        <location filename="../qml/pages/ScopePage.qml" line="538"/>
         <source>Frequencies</source>
         <translation>Frequências</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="543"/>
+        <location filename="../qml/pages/ScopePage.qml" line="544"/>
         <source>Names</source>
         <translation>Nomes</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="550"/>
+        <location filename="../qml/pages/ScopePage.qml" line="551"/>
         <source>Scan</source>
         <translation>Pesquisar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="556"/>
+        <location filename="../qml/pages/ScopePage.qml" line="557"/>
         <source>Snap</source>
         <translation>Ajustar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="568"/>
+        <location filename="../qml/pages/ScopePage.qml" line="569"/>
         <source>Intensity</source>
         <translation>Intensidade</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="579"/>
+        <location filename="../qml/pages/ScopePage.qml" line="580"/>
         <source>Peak
 %1 MHz</source>
         <translation>Pico
 %1 MHz</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="595"/>
+        <location filename="../qml/pages/ScopePage.qml" line="596"/>
         <source>Source</source>
         <translation>Fonte</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="609"/>
+        <location filename="../qml/pages/ScopePage.qml" line="610"/>
         <source>Band</source>
         <translation>Banda</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="613"/>
+        <location filename="../qml/pages/ScopePage.qml" line="614"/>
         <source>custom: %1 – %2 MHz · choosing a band jumps back</source>
         <translation>personalizado: %1 – %2 MHz · escolher uma banda volta atrás</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="629"/>
+        <location filename="../qml/pages/ScopePage.qml" line="630"/>
         <source>FM radio (internal)</source>
         <translation>Rádio FM (interno)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="631"/>
+        <location filename="../qml/pages/ScopePage.qml" line="632"/>
         <source>Built-in short antenna</source>
         <translation>Antena curta incorporada</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="632"/>
+        <location filename="../qml/pages/ScopePage.qml" line="633"/>
         <source>Off: antenna via a headset (if the device supports one)</source>
         <translation>Desligado: antena através dos auscultadores (se o dispositivo suportar)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="637"/>
+        <location filename="../qml/pages/ScopePage.qml" line="638"/>
         <source>Listen</source>
         <translation>Ouvir</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="643"/>
+        <location filename="../qml/pages/ScopePage.qml" line="644"/>
         <source>Slide a station under the red line or tap it; scanning pauses</source>
         <translation>Deslize uma estação para debaixo da linha vermelha ou toque nela; a pesquisa fica em pausa</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="670"/>
+        <location filename="../qml/pages/ScopePage.qml" line="671"/>
         <source>Volume</source>
         <translation>Volume</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="676"/>
+        <location filename="../qml/pages/ScopePage.qml" line="677"/>
         <source>Stations</source>
         <translation>Estações</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="707"/>
+        <location filename="../qml/pages/ScopePage.qml" line="708"/>
         <source>Level per 100 kHz channel (no IQ), about 50 ms per channel; ● = recognised as a station by the chip. Runs without root, Wi-Fi stays on.</source>
         <translation>Nível por canal de 100 kHz (sem IQ), cerca de 50 ms por canal; ● = reconhecido pelo chip como estação. Funciona sem root, o Wi-Fi mantém-se ligado.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="720"/>
+        <location filename="../qml/pages/ScopePage.qml" line="721"/>
         <source>LNA (IF gain)</source>
         <translation>LNA (ganho FI)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="728"/>
+        <location filename="../qml/pages/ScopePage.qml" line="729"/>
         <source>VGA (baseband gain)</source>
         <translation>VGA (ganho de banda base)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="733"/>
+        <location filename="../qml/pages/ScopePage.qml" line="734"/>
         <source>RF preamp (+14 dB)</source>
         <translation>Pré-amplificador RF (+14 dB)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="734"/>
+        <location filename="../qml/pages/ScopePage.qml" line="735"/>
         <source>Only for weak signals; overloads easily</source>
         <translation>Só para sinais fracos; satura facilmente</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="746"/>
+        <location filename="../qml/pages/ScopePage.qml" line="747"/>
         <source>Panadapter FT-991A</source>
         <translation>Panadapter FT-991A</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="747"/>
+        <location filename="../qml/pages/ScopePage.qml" line="748"/>
         <source>Tuner fixed on the IF (TSP IFace 2), axis in VFO frequency</source>
         <translation>Sintonizador fixo na FI (TSP IFace 2), eixo na frequência do VFO</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="754"/>
+        <location filename="../qml/pages/ScopePage.qml" line="755"/>
         <source>VFO frequency (MHz)</source>
         <translation>Frequência do VFO (MHz)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="763"/>
+        <location filename="../qml/pages/ScopePage.qml" line="764"/>
         <source>First IF of the radio (MHz)</source>
         <translation>Primeira FI do rádio (MHz)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="774"/>
+        <location filename="../qml/pages/ScopePage.qml" line="775"/>
         <source>IF fine correction</source>
         <translation>Correção fina da FI</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="780"/>
+        <location filename="../qml/pages/ScopePage.qml" line="781"/>
         <source>Mirror spectrum</source>
         <translation>Espelhar espetro</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="781"/>
+        <location filename="../qml/pages/ScopePage.qml" line="782"/>
         <source>If signals move the wrong way when turning the VFO</source>
         <translation>Se os sinais se deslocarem no sentido errado ao rodar o VFO</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="787"/>
+        <location filename="../qml/pages/ScopePage.qml" line="788"/>
         <source>Antenna input</source>
         <translation>Entrada de antena</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="800"/>
+        <location filename="../qml/pages/ScopePage.qml" line="801"/>
         <source>LNA state (0 = max. gain)</source>
         <translation>Estado do LNA (0 = ganho máx.)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="805"/>
+        <location filename="../qml/pages/ScopePage.qml" line="806"/>
         <source>AGC</source>
         <translation>AGC</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="811"/>
+        <location filename="../qml/pages/ScopePage.qml" line="812"/>
         <source>Display</source>
         <translation>Visualização</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="815"/>
+        <location filename="../qml/pages/ScopePage.qml" line="816"/>
         <source>Auto contrast</source>
         <translation>Contraste automático</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="816"/>
+        <location filename="../qml/pages/ScopePage.qml" line="817"/>
         <source>Colour scale follows the noise floor</source>
         <translation>A escala de cores segue o nível de ruído</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="831"/>
+        <location filename="../qml/pages/ScopePage.qml" line="832"/>
         <source>Noise floor</source>
         <translation>Nível de ruído</translation>
     </message>

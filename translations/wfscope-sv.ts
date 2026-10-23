@@ -30,11 +30,11 @@
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="63"/>
-        <source>• A USB-C cable plugged into the phone acts as the antenna. It has to be a fully wired cable (USB 3.x/USB4, e.g. 40 Gbps); simple charging and USB 2.0 cables do not work. Tested: 1.3 m USB4 cable with e-marker.
+        <source>• A USB-C cable plugged into the phone acts as the antenna. The antenna signal runs on the SBU1/SBU2 pins (A8/B8), so the cable must carry the SBU wires: fully wired USB 3.x/USB4 cables do (e.g. 40 Gbps), simple charging and USB 2.0 cables do not. Tested: 1.3 m USB4 cable with e-marker.
 • Let the cable hang straight; coiled up it receives much worse.
 • Leave the other end free: a connected laptop adds a lot of noise.
 • Without such a cable reception is very weak; station names (RDS) need a good signal.</source>
-        <translation>• En USB-C-kabel ansluten till telefonen fungerar som antenn. Det måste vara en fullt kopplad kabel (USB 3.x/USB4, t.ex. 40 Gbit/s); enkla laddkablar och USB 2.0-kablar fungerar inte. Testat: 1,3 m USB4-kabel med e-marker.
+        <translation>• En USB-C-kabel ansluten till telefonen fungerar som antenn. Antennsignalen går på stiften SBU1/SBU2 (A8/B8), så kabeln måste ha SBU-ledarna: fullt kopplade USB 3.x/USB4-kablar har dem (t.ex. 40 Gbit/s), enkla laddkablar och USB 2.0-kablar saknar dem. Testat: 1,3 m USB4-kabel med e-marker.
 • Låt kabeln hänga rakt; ihoprullad tar den emot mycket sämre.
 • Lämna andra änden fri: en ansluten bärbar dator tillför mycket brus.
 • Utan en sådan kabel är mottagningen mycket svag; stationsnamn (RDS) kräver en bra signal.</translation>
@@ -107,47 +107,48 @@ Innehåller tinyalsa och libhackrf (BSD-licenser). SDRplay-API:et ingår inte i 
 <context>
     <name>FmSource</name>
     <message>
-        <location filename="../src/fmsource.cpp" line="123"/>
+        <location filename="../src/fmsource.cpp" line="126"/>
         <source>Listening %1 MHz%3 · %2 dBm</source>
         <translation>Lyssnar %1 MHz%3 · %2 dBm</translation>
     </message>
     <message>
-        <location filename="../src/fmsource.cpp" line="137"/>
+        <location filename="../src/fmsource.cpp" line="140"/>
         <source>Internal FM ready — built-in short antenna</source>
         <translation>Inbyggd FM redo — inbyggd kort antenn</translation>
     </message>
     <message>
-        <location filename="../src/fmsource.cpp" line="310"/>
+        <location filename="../src/fmsource.cpp" line="342"/>
         <source>The FM chip cannot be powered on</source>
         <translation>FM-chippet kan inte slås på</translation>
     </message>
     <message>
-        <location filename="../src/fmsource.cpp" line="321"/>
+        <location filename="../src/fmsource.cpp" line="327"/>
+        <location filename="../src/fmsource.cpp" line="353"/>
         <source>Internal FM scanning …</source>
         <translation>Inbyggd FM söker …</translation>
     </message>
     <message>
-        <location filename="../src/fmsource.cpp" line="349"/>
+        <location filename="../src/fmsource.cpp" line="381"/>
         <source>Internal FM stopped</source>
         <translation>Inbyggd FM stoppad</translation>
     </message>
     <message>
-        <location filename="../src/fmsource.cpp" line="589"/>
+        <location filename="../src/fmsource.cpp" line="621"/>
         <source>FM measurement failed (%1)</source>
         <translation>FM-mätning misslyckades (%1)</translation>
     </message>
     <message>
-        <location filename="../src/fmsource.cpp" line="605"/>
+        <location filename="../src/fmsource.cpp" line="637"/>
         <source>Internal FM · %1 channels · %2 s/sweep · %3</source>
         <translation>Inbyggd FM · %1 kanaler · %2 s/svep · %3</translation>
     </message>
     <message>
-        <location filename="../src/fmsource.cpp" line="608"/>
+        <location filename="../src/fmsource.cpp" line="640"/>
         <source>short antenna</source>
         <translation>kort antenn</translation>
     </message>
     <message>
-        <location filename="../src/fmsource.cpp" line="608"/>
+        <location filename="../src/fmsource.cpp" line="640"/>
         <source>headset antenna</source>
         <translation>headsetantenn</translation>
     </message>
@@ -429,179 +430,179 @@ Innehåller tinyalsa och libhackrf (BSD-licenser). SDRplay-API:et ingår inte i 
         <translation>Spann %1 · nyp i spektrumet för att zooma</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="537"/>
+        <location filename="../qml/pages/ScopePage.qml" line="538"/>
         <source>Frequencies</source>
         <translation>Frekvenser</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="543"/>
+        <location filename="../qml/pages/ScopePage.qml" line="544"/>
         <source>Names</source>
         <translation>Namn</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="550"/>
+        <location filename="../qml/pages/ScopePage.qml" line="551"/>
         <source>Scan</source>
         <translation>Skanna</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="556"/>
+        <location filename="../qml/pages/ScopePage.qml" line="557"/>
         <source>Snap</source>
         <translation>Fäst</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="568"/>
+        <location filename="../qml/pages/ScopePage.qml" line="569"/>
         <source>Intensity</source>
         <translation>Intensitet</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="579"/>
+        <location filename="../qml/pages/ScopePage.qml" line="580"/>
         <source>Peak
 %1 MHz</source>
         <translation>Topp
 %1 MHz</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="595"/>
+        <location filename="../qml/pages/ScopePage.qml" line="596"/>
         <source>Source</source>
         <translation>Källa</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="609"/>
+        <location filename="../qml/pages/ScopePage.qml" line="610"/>
         <source>Band</source>
         <translation>Band</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="613"/>
+        <location filename="../qml/pages/ScopePage.qml" line="614"/>
         <source>custom: %1 – %2 MHz · choosing a band jumps back</source>
         <translation>anpassat: %1 – %2 MHz · välj ett band för att återgå</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="629"/>
+        <location filename="../qml/pages/ScopePage.qml" line="630"/>
         <source>FM radio (internal)</source>
         <translation>FM-radio (inbyggd)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="631"/>
+        <location filename="../qml/pages/ScopePage.qml" line="632"/>
         <source>Built-in short antenna</source>
         <translation>Inbyggd kort antenn</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="632"/>
+        <location filename="../qml/pages/ScopePage.qml" line="633"/>
         <source>Off: antenna via a headset (if the device supports one)</source>
         <translation>Av: antenn via headset (om enheten stöder det)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="637"/>
+        <location filename="../qml/pages/ScopePage.qml" line="638"/>
         <source>Listen</source>
         <translation>Lyssna</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="643"/>
+        <location filename="../qml/pages/ScopePage.qml" line="644"/>
         <source>Slide a station under the red line or tap it; scanning pauses</source>
         <translation>Dra en station under den röda linjen eller tryck på den; sökningen pausas</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="670"/>
+        <location filename="../qml/pages/ScopePage.qml" line="671"/>
         <source>Volume</source>
         <translation>Volym</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="676"/>
+        <location filename="../qml/pages/ScopePage.qml" line="677"/>
         <source>Stations</source>
         <translation>Stationer</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="707"/>
+        <location filename="../qml/pages/ScopePage.qml" line="708"/>
         <source>Level per 100 kHz channel (no IQ), about 50 ms per channel; ● = recognised as a station by the chip. Runs without root, Wi-Fi stays on.</source>
         <translation>Nivå per 100 kHz-kanal (ingen IQ), cirka 50 ms per kanal; ● = identifierad som station av chippet. Körs utan root, wifi förblir på.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="720"/>
+        <location filename="../qml/pages/ScopePage.qml" line="721"/>
         <source>LNA (IF gain)</source>
         <translation>LNA (MF-förstärkning)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="728"/>
+        <location filename="../qml/pages/ScopePage.qml" line="729"/>
         <source>VGA (baseband gain)</source>
         <translation>VGA (basbandsförstärkning)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="733"/>
+        <location filename="../qml/pages/ScopePage.qml" line="734"/>
         <source>RF preamp (+14 dB)</source>
         <translation>RF-förförstärkare (+14 dB)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="734"/>
+        <location filename="../qml/pages/ScopePage.qml" line="735"/>
         <source>Only for weak signals; overloads easily</source>
         <translation>Endast för svaga signaler; överstyrs lätt</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="746"/>
+        <location filename="../qml/pages/ScopePage.qml" line="747"/>
         <source>Panadapter FT-991A</source>
         <translation>Panadapter FT-991A</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="747"/>
+        <location filename="../qml/pages/ScopePage.qml" line="748"/>
         <source>Tuner fixed on the IF (TSP IFace 2), axis in VFO frequency</source>
         <translation>Tunern fast på MF (TSP IFace 2), axel i VFO-frekvens</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="754"/>
+        <location filename="../qml/pages/ScopePage.qml" line="755"/>
         <source>VFO frequency (MHz)</source>
         <translation>VFO-frekvens (MHz)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="763"/>
+        <location filename="../qml/pages/ScopePage.qml" line="764"/>
         <source>First IF of the radio (MHz)</source>
         <translation>Radions första MF (MHz)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="774"/>
+        <location filename="../qml/pages/ScopePage.qml" line="775"/>
         <source>IF fine correction</source>
         <translation>MF-finjustering</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="780"/>
+        <location filename="../qml/pages/ScopePage.qml" line="781"/>
         <source>Mirror spectrum</source>
         <translation>Spegla spektrum</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="781"/>
+        <location filename="../qml/pages/ScopePage.qml" line="782"/>
         <source>If signals move the wrong way when turning the VFO</source>
         <translation>Om signalerna rör sig åt fel håll när VFO:n vrids</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="787"/>
+        <location filename="../qml/pages/ScopePage.qml" line="788"/>
         <source>Antenna input</source>
         <translation>Antenningång</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="800"/>
+        <location filename="../qml/pages/ScopePage.qml" line="801"/>
         <source>LNA state (0 = max. gain)</source>
         <translation>LNA-steg (0 = max. förstärkning)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="805"/>
+        <location filename="../qml/pages/ScopePage.qml" line="806"/>
         <source>AGC</source>
         <translation>AGC</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="811"/>
+        <location filename="../qml/pages/ScopePage.qml" line="812"/>
         <source>Display</source>
         <translation>Visning</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="815"/>
+        <location filename="../qml/pages/ScopePage.qml" line="816"/>
         <source>Auto contrast</source>
         <translation>Autokontrast</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="816"/>
+        <location filename="../qml/pages/ScopePage.qml" line="817"/>
         <source>Colour scale follows the noise floor</source>
         <translation>Färgskalan följer brusgolvet</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="831"/>
+        <location filename="../qml/pages/ScopePage.qml" line="832"/>
         <source>Noise floor</source>
         <translation>Brusgolv</translation>
     </message>

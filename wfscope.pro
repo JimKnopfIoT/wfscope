@@ -3,7 +3,7 @@ TARGET = wfscope
 CONFIG += sailfishapp sailfishapp_i18n c++14
 
 # Versionsnummer für die Über-Seite; synchron mit rpm/wfscope.spec halten
-DEFINES += WFSCOPE_VERSION=\\\"0.2.0\\\"
+DEFINES += WFSCOPE_VERSION=\\\"0.2.1\\\"
 
 SAILFISHAPP_ICONS = 86x86 108x108 128x128 172x172
 

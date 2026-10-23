@@ -30,11 +30,11 @@
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="63"/>
-        <source>• A USB-C cable plugged into the phone acts as the antenna. It has to be a fully wired cable (USB 3.x/USB4, e.g. 40 Gbps); simple charging and USB 2.0 cables do not work. Tested: 1.3 m USB4 cable with e-marker.
+        <source>• A USB-C cable plugged into the phone acts as the antenna. The antenna signal runs on the SBU1/SBU2 pins (A8/B8), so the cable must carry the SBU wires: fully wired USB 3.x/USB4 cables do (e.g. 40 Gbps), simple charging and USB 2.0 cables do not. Tested: 1.3 m USB4 cable with e-marker.
 • Let the cable hang straight; coiled up it receives much worse.
 • Leave the other end free: a connected laptop adds a lot of noise.
 • Without such a cable reception is very weak; station names (RDS) need a good signal.</source>
-        <translation>• 插入手机的 USB-C 线缆充当天线。必须是全功能线缆（USB 3.x/USB4，例如 40 Gbps）；简单的充电线和 USB 2.0 线缆无法使用。已测试：带 e-marker 的 1.3 米 USB4 线缆。
+        <translation>• 插入手机的 USB-C 线缆充当天线。天线信号经由 SBU1/SBU2 引脚（A8/B8） 传输，因此线缆必须带有 SBU 线：全功能 USB 3.x/USB4 线缆具备（例如 40 Gbps），简单的充电线和 USB 2.0 线缆则没有。已测试：带 e-marker 的 1.3 米 USB4 线缆。
 • 让线缆笔直垂下；盘绕时接收效果差很多。
 • 另一端保持空闲：连接笔记本电脑会带来大量噪声。
 • 没有这样的线缆时接收非常弱；电台名称（RDS）需要良好的信号。</translation>
@@ -107,47 +107,48 @@ Contains tinyalsa and libhackrf (BSD licences). The SDRplay API is not part of t
 <context>
     <name>FmSource</name>
     <message>
-        <location filename="../src/fmsource.cpp" line="123"/>
+        <location filename="../src/fmsource.cpp" line="126"/>
         <source>Listening %1 MHz%3 · %2 dBm</source>
         <translation>正在收听 %1 MHz%3 · %2 dBm</translation>
     </message>
     <message>
-        <location filename="../src/fmsource.cpp" line="137"/>
+        <location filename="../src/fmsource.cpp" line="140"/>
         <source>Internal FM ready — built-in short antenna</source>
         <translation>内置 FM 就绪 — 内置短天线</translation>
     </message>
     <message>
-        <location filename="../src/fmsource.cpp" line="310"/>
+        <location filename="../src/fmsource.cpp" line="342"/>
         <source>The FM chip cannot be powered on</source>
         <translation>无法开启 FM 芯片</translation>
     </message>
     <message>
-        <location filename="../src/fmsource.cpp" line="321"/>
+        <location filename="../src/fmsource.cpp" line="327"/>
+        <location filename="../src/fmsource.cpp" line="353"/>
         <source>Internal FM scanning …</source>
         <translation>内置 FM 扫描中 …</translation>
     </message>
     <message>
-        <location filename="../src/fmsource.cpp" line="349"/>
+        <location filename="../src/fmsource.cpp" line="381"/>
         <source>Internal FM stopped</source>
         <translation>内置 FM 已停止</translation>
     </message>
     <message>
-        <location filename="../src/fmsource.cpp" line="589"/>
+        <location filename="../src/fmsource.cpp" line="621"/>
         <source>FM measurement failed (%1)</source>
         <translation>FM 测量失败（%1）</translation>
     </message>
     <message>
-        <location filename="../src/fmsource.cpp" line="605"/>
+        <location filename="../src/fmsource.cpp" line="637"/>
         <source>Internal FM · %1 channels · %2 s/sweep · %3</source>
         <translation>内置 FM · %1 个频道 · %2 秒/扫描 · %3</translation>
     </message>
     <message>
-        <location filename="../src/fmsource.cpp" line="608"/>
+        <location filename="../src/fmsource.cpp" line="640"/>
         <source>short antenna</source>
         <translation>短天线</translation>
     </message>
     <message>
-        <location filename="../src/fmsource.cpp" line="608"/>
+        <location filename="../src/fmsource.cpp" line="640"/>
         <source>headset antenna</source>
         <translation>耳机天线</translation>
     </message>
@@ -429,179 +430,179 @@ Contains tinyalsa and libhackrf (BSD licences). The SDRplay API is not part of t
         <translation>跨度 %1 · 在频谱上双指缩放</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="537"/>
+        <location filename="../qml/pages/ScopePage.qml" line="538"/>
         <source>Frequencies</source>
         <translation>频率</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="543"/>
+        <location filename="../qml/pages/ScopePage.qml" line="544"/>
         <source>Names</source>
         <translation>名称</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="550"/>
+        <location filename="../qml/pages/ScopePage.qml" line="551"/>
         <source>Scan</source>
         <translation>扫描</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="556"/>
+        <location filename="../qml/pages/ScopePage.qml" line="557"/>
         <source>Snap</source>
         <translation>吸附</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="568"/>
+        <location filename="../qml/pages/ScopePage.qml" line="569"/>
         <source>Intensity</source>
         <translation>强度</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="579"/>
+        <location filename="../qml/pages/ScopePage.qml" line="580"/>
         <source>Peak
 %1 MHz</source>
         <translation>峰值
 %1 MHz</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="595"/>
+        <location filename="../qml/pages/ScopePage.qml" line="596"/>
         <source>Source</source>
         <translation>信号源</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="609"/>
+        <location filename="../qml/pages/ScopePage.qml" line="610"/>
         <source>Band</source>
         <translation>频段</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="613"/>
+        <location filename="../qml/pages/ScopePage.qml" line="614"/>
         <source>custom: %1 – %2 MHz · choosing a band jumps back</source>
         <translation>自定义：%1 – %2 MHz · 选择频段即可返回</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="629"/>
+        <location filename="../qml/pages/ScopePage.qml" line="630"/>
         <source>FM radio (internal)</source>
         <translation>FM 收音机（内置）</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="631"/>
+        <location filename="../qml/pages/ScopePage.qml" line="632"/>
         <source>Built-in short antenna</source>
         <translation>内置短天线</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="632"/>
+        <location filename="../qml/pages/ScopePage.qml" line="633"/>
         <source>Off: antenna via a headset (if the device supports one)</source>
         <translation>关闭：通过耳机作天线（若设备支持）</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="637"/>
+        <location filename="../qml/pages/ScopePage.qml" line="638"/>
         <source>Listen</source>
         <translation>收听</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="643"/>
+        <location filename="../qml/pages/ScopePage.qml" line="644"/>
         <source>Slide a station under the red line or tap it; scanning pauses</source>
         <translation>将电台拖到红线下或点按它；扫描将暂停</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="670"/>
+        <location filename="../qml/pages/ScopePage.qml" line="671"/>
         <source>Volume</source>
         <translation>音量</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="676"/>
+        <location filename="../qml/pages/ScopePage.qml" line="677"/>
         <source>Stations</source>
         <translation>电台</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="707"/>
+        <location filename="../qml/pages/ScopePage.qml" line="708"/>
         <source>Level per 100 kHz channel (no IQ), about 50 ms per channel; ● = recognised as a station by the chip. Runs without root, Wi-Fi stays on.</source>
         <translation>每个 100 kHz 频道的电平（无 IQ），每个频道约 50 毫秒；● = 芯片识别为电台。无需 root 运行，Wi-Fi 保持开启。</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="720"/>
+        <location filename="../qml/pages/ScopePage.qml" line="721"/>
         <source>LNA (IF gain)</source>
         <translation>LNA（中频增益）</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="728"/>
+        <location filename="../qml/pages/ScopePage.qml" line="729"/>
         <source>VGA (baseband gain)</source>
         <translation>VGA（基带增益）</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="733"/>
+        <location filename="../qml/pages/ScopePage.qml" line="734"/>
         <source>RF preamp (+14 dB)</source>
         <translation>射频前置放大器（+14 dB）</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="734"/>
+        <location filename="../qml/pages/ScopePage.qml" line="735"/>
         <source>Only for weak signals; overloads easily</source>
         <translation>仅用于弱信号；容易过载</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="746"/>
+        <location filename="../qml/pages/ScopePage.qml" line="747"/>
         <source>Panadapter FT-991A</source>
         <translation>全景适配器 FT-991A</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="747"/>
+        <location filename="../qml/pages/ScopePage.qml" line="748"/>
         <source>Tuner fixed on the IF (TSP IFace 2), axis in VFO frequency</source>
         <translation>调谐器固定在中频（TSP IFace 2），坐标轴显示 VFO 频率</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="754"/>
+        <location filename="../qml/pages/ScopePage.qml" line="755"/>
         <source>VFO frequency (MHz)</source>
         <translation>VFO 频率（MHz）</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="763"/>
+        <location filename="../qml/pages/ScopePage.qml" line="764"/>
         <source>First IF of the radio (MHz)</source>
         <translation>电台的第一中频（MHz）</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="774"/>
+        <location filename="../qml/pages/ScopePage.qml" line="775"/>
         <source>IF fine correction</source>
         <translation>中频微调</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="780"/>
+        <location filename="../qml/pages/ScopePage.qml" line="781"/>
         <source>Mirror spectrum</source>
         <translation>镜像频谱</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="781"/>
+        <location filename="../qml/pages/ScopePage.qml" line="782"/>
         <source>If signals move the wrong way when turning the VFO</source>
         <translation>转动 VFO 时信号移动方向相反时使用</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="787"/>
+        <location filename="../qml/pages/ScopePage.qml" line="788"/>
         <source>Antenna input</source>
         <translation>天线输入</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="800"/>
+        <location filename="../qml/pages/ScopePage.qml" line="801"/>
         <source>LNA state (0 = max. gain)</source>
         <translation>LNA 档位（0 = 最大增益）</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="805"/>
+        <location filename="../qml/pages/ScopePage.qml" line="806"/>
         <source>AGC</source>
         <translation>AGC</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="811"/>
+        <location filename="../qml/pages/ScopePage.qml" line="812"/>
         <source>Display</source>
         <translation>显示</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="815"/>
+        <location filename="../qml/pages/ScopePage.qml" line="816"/>
         <source>Auto contrast</source>
         <translation>自动对比度</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="816"/>
+        <location filename="../qml/pages/ScopePage.qml" line="817"/>
         <source>Colour scale follows the noise floor</source>
         <translation>色标跟随底噪</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="831"/>
+        <location filename="../qml/pages/ScopePage.qml" line="832"/>
         <source>Noise floor</source>
         <translation>底噪</translation>
     </message>

@@ -133,6 +133,12 @@ void SpectrumView::remapFall(int newWidth, double newCenter, double newSpan)
     m_fall = out;
 }
 
+// Breite des Wasserfallbilds: bis zu 8 Pixel je Messpunkt, höchstens 2048
+int SpectrumView::fallWidthFor(int bins)
+{
+    return bins > 1 ? qBound(bins, (bins - 1) * 8 + 1, qMax(bins, 2048)) : qMax(1, bins);
+}
+
 void SpectrumView::ensureFall(int w)
 {
     const int h = 200;
@@ -158,7 +164,7 @@ void SpectrumView::pushSweep(const QVector<float> &bins, double centerMHz, doubl
         const double ovLo = qMax(m_center - m_span / 2, centerMHz - spanMHz / 2);
         const double ovHi = qMin(m_center + m_span / 2, centerMHz + spanMHz / 2);
         if (!m_fall.isNull() && m_span > 0 && ovHi > ovLo)
-            remapFall(bins.size(), centerMHz, spanMHz);
+            remapFall(fallWidthFor(bins.size()), centerMHz, spanMHz);
         else
             m_fall = QImage();
         if (!m_commitPending)
@@ -180,13 +186,21 @@ void SpectrumView::pushSweep(const QVector<float> &bins, double centerMHz, doubl
     if (w > 0) {
         if (m_auto)
             updateAutoRange();
-        ensureFall(w);
+        const int fw = fallWidthFor(w);
+        ensureFall(fw);
         // Ringpuffer rückwärts: m_row ist die jüngste Zeile
         m_row = (m_row + m_fall.height() - 1) % m_fall.height();
         QRgb *line = reinterpret_cast<QRgb *>(m_fall.scanLine(m_row));
+        // Pegel zwischen den Messpunkten linear interpolieren und erst dann einfärben:
+        // feine Farbübergänge entlang der Palette statt breiter Blöcke (Bin i liegt bei i/(w-1))
+        for (int x = 0; x < fw; ++x) {
+            const double pos = w > 1 ? (x + 0.5) / fw * (w - 1) : 0.0;
+            const int i0 = qBound(0, int(pos), w - 1), i1 = qMin(i0 + 1, w - 1);
+            const float u = float(pos - i0);
+            line[x] = m_lut[colorFor(bins[i0] + (bins[i1] - bins[i0]) * u)];
+        }
         m_peakDbm = -200.0f;
         for (int i = 0; i < w; ++i) {
-            line[i] = m_lut[colorFor(bins[i])];
             if (bins[i] > m_peakDbm) {
                 m_peakDbm = bins[i];
                 m_peakMHz = centerMHz - spanMHz / 2.0 + spanMHz * i / double(w - 1);
@@ -299,6 +313,7 @@ void SpectrumView::paint(QPainter *p)
         p->save();
         p->setClipRect(QRectF(0, fallTop, w, fallH));
         p->setTransform(view, true);
+        p->setRenderHint(QPainter::SmoothPixmapTransform, true);   // keine Klötzchen beim Skalieren
         p->drawImage(QRectF(0, fallTop, w, firstRows * scale), m_fall,
                      QRect(0, m_row, m_fall.width(), firstRows));
         if (m_row > 0)

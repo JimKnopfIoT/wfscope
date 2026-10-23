@@ -30,11 +30,11 @@
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="63"/>
-        <source>• A USB-C cable plugged into the phone acts as the antenna. It has to be a fully wired cable (USB 3.x/USB4, e.g. 40 Gbps); simple charging and USB 2.0 cables do not work. Tested: 1.3 m USB4 cable with e-marker.
+        <source>• A USB-C cable plugged into the phone acts as the antenna. The antenna signal runs on the SBU1/SBU2 pins (A8/B8), so the cable must carry the SBU wires: fully wired USB 3.x/USB4 cables do (e.g. 40 Gbps), simple charging and USB 2.0 cables do not. Tested: 1.3 m USB4 cable with e-marker.
 • Let the cable hang straight; coiled up it receives much worse.
 • Leave the other end free: a connected laptop adds a lot of noise.
 • Without such a cable reception is very weak; station names (RDS) need a good signal.</source>
-        <translation>• Kejbil USB-C imdaħħal fit-telefon jaħdem bħala antenna. Irid ikun kejbil b’wajers sħaħ (USB 3.x/USB4, eż. 40 Gbps); kejbils sempliċi tal-iċċarġjar u kejbils USB 2.0 ma jaħdmux. Ittestjat: kejbil USB4 ta’ 1,3 m b’e-marker.
+        <translation>• Kejbil USB-C imdaħħal fit-telefon jaħdem bħala antenna. Is-sinjal tal-antenna jgħaddi mill-pins SBU1/SBU2 (A8/B8), għalhekk il-kejbil irid ikollu l-wajers SBU: il-kejbils USB 3.x/USB4 b’wajers sħaħ għandhom (eż. 40 Gbps), il-kejbils sempliċi tal-iċċarġjar u l-kejbils USB 2.0 m’għandhomx. Ittestjat: kejbil USB4 ta’ 1,3 m b’e-marker.
 • Ħalli l-kejbil imdendel dritt; jekk ikun mgeżwer jirċievi ħafna agħar.
 • Ħalli t-tarf l-ieħor ħieles: laptop imqabbad iżid ħafna storbju.
 • Mingħajr kejbil bħal dan ir-riċezzjoni hija dgħajfa ħafna; l-ismijiet tal-istazzjonijiet (RDS) jeħtieġu sinjal tajjeb.</translation>
@@ -107,47 +107,48 @@ Fih tinyalsa u libhackrf (liċenzji BSD). L-API ta&apos; SDRplay mhix parti mill
 <context>
     <name>FmSource</name>
     <message>
-        <location filename="../src/fmsource.cpp" line="123"/>
+        <location filename="../src/fmsource.cpp" line="126"/>
         <source>Listening %1 MHz%3 · %2 dBm</source>
         <translation>Qed jisma&apos; %1 MHz%3 · %2 dBm</translation>
     </message>
     <message>
-        <location filename="../src/fmsource.cpp" line="137"/>
+        <location filename="../src/fmsource.cpp" line="140"/>
         <source>Internal FM ready — built-in short antenna</source>
         <translation>FM intern lest — antenna qasira integrata</translation>
     </message>
     <message>
-        <location filename="../src/fmsource.cpp" line="310"/>
+        <location filename="../src/fmsource.cpp" line="342"/>
         <source>The FM chip cannot be powered on</source>
         <translation>Iċ-ċippa FM ma tistax tinxtegħel</translation>
     </message>
     <message>
-        <location filename="../src/fmsource.cpp" line="321"/>
+        <location filename="../src/fmsource.cpp" line="327"/>
+        <location filename="../src/fmsource.cpp" line="353"/>
         <source>Internal FM scanning …</source>
         <translation>FM intern qed jiskennja …</translation>
     </message>
     <message>
-        <location filename="../src/fmsource.cpp" line="349"/>
+        <location filename="../src/fmsource.cpp" line="381"/>
         <source>Internal FM stopped</source>
         <translation>FM intern twaqqaf</translation>
     </message>
     <message>
-        <location filename="../src/fmsource.cpp" line="589"/>
+        <location filename="../src/fmsource.cpp" line="621"/>
         <source>FM measurement failed (%1)</source>
         <translation>Il-kejl FM falla (%1)</translation>
     </message>
     <message>
-        <location filename="../src/fmsource.cpp" line="605"/>
+        <location filename="../src/fmsource.cpp" line="637"/>
         <source>Internal FM · %1 channels · %2 s/sweep · %3</source>
         <translation>FM intern · %1 kanali · %2 s/sweep · %3</translation>
     </message>
     <message>
-        <location filename="../src/fmsource.cpp" line="608"/>
+        <location filename="../src/fmsource.cpp" line="640"/>
         <source>short antenna</source>
         <translation>antenna qasira</translation>
     </message>
     <message>
-        <location filename="../src/fmsource.cpp" line="608"/>
+        <location filename="../src/fmsource.cpp" line="640"/>
         <source>headset antenna</source>
         <translation>antenna tal-headset</translation>
     </message>
@@ -429,179 +430,179 @@ Fih tinyalsa u libhackrf (liċenzji BSD). L-API ta&apos; SDRplay mhix parti mill
         <translation>Wisa&apos; %1 · oqros l-ispettru biex tagħmel zoom</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="537"/>
+        <location filename="../qml/pages/ScopePage.qml" line="538"/>
         <source>Frequencies</source>
         <translation>Frekwenzi</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="543"/>
+        <location filename="../qml/pages/ScopePage.qml" line="544"/>
         <source>Names</source>
         <translation>Ismijiet</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="550"/>
+        <location filename="../qml/pages/ScopePage.qml" line="551"/>
         <source>Scan</source>
         <translation>Skenja</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="556"/>
+        <location filename="../qml/pages/ScopePage.qml" line="557"/>
         <source>Snap</source>
         <translation>Qbid</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="568"/>
+        <location filename="../qml/pages/ScopePage.qml" line="569"/>
         <source>Intensity</source>
         <translation>Intensità</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="579"/>
+        <location filename="../qml/pages/ScopePage.qml" line="580"/>
         <source>Peak
 %1 MHz</source>
         <translation>Quċċata
 %1 MHz</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="595"/>
+        <location filename="../qml/pages/ScopePage.qml" line="596"/>
         <source>Source</source>
         <translation>Sors</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="609"/>
+        <location filename="../qml/pages/ScopePage.qml" line="610"/>
         <source>Band</source>
         <translation>Banda</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="613"/>
+        <location filename="../qml/pages/ScopePage.qml" line="614"/>
         <source>custom: %1 – %2 MHz · choosing a band jumps back</source>
         <translation>personalizzat: %1 – %2 MHz · l-għażla ta&apos; banda terġa&apos; lura</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="629"/>
+        <location filename="../qml/pages/ScopePage.qml" line="630"/>
         <source>FM radio (internal)</source>
         <translation>Radju FM (intern)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="631"/>
+        <location filename="../qml/pages/ScopePage.qml" line="632"/>
         <source>Built-in short antenna</source>
         <translation>Antenna qasira integrata</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="632"/>
+        <location filename="../qml/pages/ScopePage.qml" line="633"/>
         <source>Off: antenna via a headset (if the device supports one)</source>
         <translation>Mitfi: antenna permezz ta&apos; headset (jekk l-apparat jappoġġjah)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="637"/>
+        <location filename="../qml/pages/ScopePage.qml" line="638"/>
         <source>Listen</source>
         <translation>Isma&apos;</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="643"/>
+        <location filename="../qml/pages/ScopePage.qml" line="644"/>
         <source>Slide a station under the red line or tap it; scanning pauses</source>
         <translation>Żerżaq stazzjon taħt il-linja ħamra jew agħfas fuqu; l-iskennjar jieqaf temporanjament</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="670"/>
+        <location filename="../qml/pages/ScopePage.qml" line="671"/>
         <source>Volume</source>
         <translation>Volum</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="676"/>
+        <location filename="../qml/pages/ScopePage.qml" line="677"/>
         <source>Stations</source>
         <translation>Stazzjonijiet</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="707"/>
+        <location filename="../qml/pages/ScopePage.qml" line="708"/>
         <source>Level per 100 kHz channel (no IQ), about 50 ms per channel; ● = recognised as a station by the chip. Runs without root, Wi-Fi stays on.</source>
         <translation>Livell għal kull kanal ta&apos; 100 kHz (mingħajr IQ), madwar 50 ms għal kull kanal; ● = magħruf miċ-ċippa bħala stazzjon. Jaħdem mingħajr root, il-Wi-Fi jibqa&apos; mixgħul.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="720"/>
+        <location filename="../qml/pages/ScopePage.qml" line="721"/>
         <source>LNA (IF gain)</source>
         <translation>LNA (gwadann IF)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="728"/>
+        <location filename="../qml/pages/ScopePage.qml" line="729"/>
         <source>VGA (baseband gain)</source>
         <translation>VGA (gwadann tal-baseband)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="733"/>
+        <location filename="../qml/pages/ScopePage.qml" line="734"/>
         <source>RF preamp (+14 dB)</source>
         <translation>Preamplifikatur RF (+14 dB)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="734"/>
+        <location filename="../qml/pages/ScopePage.qml" line="735"/>
         <source>Only for weak signals; overloads easily</source>
         <translation>Għal sinjali dgħajfa biss; jitgħabba żżejjed faċilment</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="746"/>
+        <location filename="../qml/pages/ScopePage.qml" line="747"/>
         <source>Panadapter FT-991A</source>
         <translation>Panadapter FT-991A</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="747"/>
+        <location filename="../qml/pages/ScopePage.qml" line="748"/>
         <source>Tuner fixed on the IF (TSP IFace 2), axis in VFO frequency</source>
         <translation>Tuner fiss fuq l-IF (TSP IFace 2), assi fil-frekwenza tal-VFO</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="754"/>
+        <location filename="../qml/pages/ScopePage.qml" line="755"/>
         <source>VFO frequency (MHz)</source>
         <translation>Frekwenza tal-VFO (MHz)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="763"/>
+        <location filename="../qml/pages/ScopePage.qml" line="764"/>
         <source>First IF of the radio (MHz)</source>
         <translation>L-ewwel IF tar-radju (MHz)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="774"/>
+        <location filename="../qml/pages/ScopePage.qml" line="775"/>
         <source>IF fine correction</source>
         <translation>Korrezzjoni fina tal-IF</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="780"/>
+        <location filename="../qml/pages/ScopePage.qml" line="781"/>
         <source>Mirror spectrum</source>
         <translation>Irrifletti l-ispettru</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="781"/>
+        <location filename="../qml/pages/ScopePage.qml" line="782"/>
         <source>If signals move the wrong way when turning the VFO</source>
         <translation>Jekk is-sinjali jiċċaqilqu fid-direzzjoni l-ħażina meta ddawwar il-VFO</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="787"/>
+        <location filename="../qml/pages/ScopePage.qml" line="788"/>
         <source>Antenna input</source>
         <translation>Input tal-antenna</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="800"/>
+        <location filename="../qml/pages/ScopePage.qml" line="801"/>
         <source>LNA state (0 = max. gain)</source>
         <translation>Stat tal-LNA (0 = gwadann massimu)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="805"/>
+        <location filename="../qml/pages/ScopePage.qml" line="806"/>
         <source>AGC</source>
         <translation>AGC</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="811"/>
+        <location filename="../qml/pages/ScopePage.qml" line="812"/>
         <source>Display</source>
         <translation>Wiri</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="815"/>
+        <location filename="../qml/pages/ScopePage.qml" line="816"/>
         <source>Auto contrast</source>
         <translation>Kuntrast awtomatiku</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="816"/>
+        <location filename="../qml/pages/ScopePage.qml" line="817"/>
         <source>Colour scale follows the noise floor</source>
         <translation>L-iskala tal-kuluri ssegwi l-livell tal-istorbju</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="831"/>
+        <location filename="../qml/pages/ScopePage.qml" line="832"/>
         <source>Noise floor</source>
         <translation>Livell tal-istorbju</translation>
     </message>

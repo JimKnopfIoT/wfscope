@@ -30,11 +30,11 @@
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="63"/>
-        <source>• A USB-C cable plugged into the phone acts as the antenna. It has to be a fully wired cable (USB 3.x/USB4, e.g. 40 Gbps); simple charging and USB 2.0 cables do not work. Tested: 1.3 m USB4 cable with e-marker.
+        <source>• A USB-C cable plugged into the phone acts as the antenna. The antenna signal runs on the SBU1/SBU2 pins (A8/B8), so the cable must carry the SBU wires: fully wired USB 3.x/USB4 cables do (e.g. 40 Gbps), simple charging and USB 2.0 cables do not. Tested: 1.3 m USB4 cable with e-marker.
 • Let the cable hang straight; coiled up it receives much worse.
 • Leave the other end free: a connected laptop adds a lot of noise.
 • Without such a cable reception is very weak; station names (RDS) need a good signal.</source>
-        <translation>• Un cablu USB-C conectat la telefon funcționează ca antenă. Trebuie să fie un cablu complet cablat (USB 3.x/USB4, de ex. 40 Gbps); cablurile simple de încărcare și cablurile USB 2.0 nu funcționează. Testat: cablu USB4 de 1,3 m cu e-marker.
+        <translation>• Un cablu USB-C conectat la telefon funcționează ca antenă. Semnalul antenei trece prin pinii SBU1/SBU2 (A8/B8), deci cablul trebuie să aibă firele SBU: cablurile USB 3.x/USB4 complet cablate le au (de ex. 40 Gbps), cablurile simple de încărcare și cablurile USB 2.0 nu. Testat: cablu USB4 de 1,3 m cu e-marker.
 • Lăsați cablul să atârne drept; încolăcit, recepționează mult mai slab.
 • Lăsați celălalt capăt liber: un laptop conectat adaugă mult zgomot.
 • Fără un astfel de cablu, recepția este foarte slabă; numele posturilor (RDS) necesită un semnal bun.</translation>
@@ -107,47 +107,48 @@ Conține tinyalsa și libhackrf (licențe BSD). API-ul SDRplay nu face parte din
 <context>
     <name>FmSource</name>
     <message>
-        <location filename="../src/fmsource.cpp" line="123"/>
+        <location filename="../src/fmsource.cpp" line="126"/>
         <source>Listening %1 MHz%3 · %2 dBm</source>
         <translation>Ascultare %1 MHz%3 · %2 dBm</translation>
     </message>
     <message>
-        <location filename="../src/fmsource.cpp" line="137"/>
+        <location filename="../src/fmsource.cpp" line="140"/>
         <source>Internal FM ready — built-in short antenna</source>
         <translation>FM intern pregătit — antenă scurtă încorporată</translation>
     </message>
     <message>
-        <location filename="../src/fmsource.cpp" line="310"/>
+        <location filename="../src/fmsource.cpp" line="342"/>
         <source>The FM chip cannot be powered on</source>
         <translation>Cipul FM nu poate fi pornit</translation>
     </message>
     <message>
-        <location filename="../src/fmsource.cpp" line="321"/>
+        <location filename="../src/fmsource.cpp" line="327"/>
+        <location filename="../src/fmsource.cpp" line="353"/>
         <source>Internal FM scanning …</source>
         <translation>FM intern scanează …</translation>
     </message>
     <message>
-        <location filename="../src/fmsource.cpp" line="349"/>
+        <location filename="../src/fmsource.cpp" line="381"/>
         <source>Internal FM stopped</source>
         <translation>FM intern oprit</translation>
     </message>
     <message>
-        <location filename="../src/fmsource.cpp" line="589"/>
+        <location filename="../src/fmsource.cpp" line="621"/>
         <source>FM measurement failed (%1)</source>
         <translation>Măsurarea FM a eșuat (%1)</translation>
     </message>
     <message>
-        <location filename="../src/fmsource.cpp" line="605"/>
+        <location filename="../src/fmsource.cpp" line="637"/>
         <source>Internal FM · %1 channels · %2 s/sweep · %3</source>
         <translation>FM intern · %1 canale · %2 s/baleiaj · %3</translation>
     </message>
     <message>
-        <location filename="../src/fmsource.cpp" line="608"/>
+        <location filename="../src/fmsource.cpp" line="640"/>
         <source>short antenna</source>
         <translation>antenă scurtă</translation>
     </message>
     <message>
-        <location filename="../src/fmsource.cpp" line="608"/>
+        <location filename="../src/fmsource.cpp" line="640"/>
         <source>headset antenna</source>
         <translation>antenă prin căști</translation>
     </message>
@@ -429,179 +430,179 @@ Conține tinyalsa și libhackrf (licențe BSD). API-ul SDRplay nu face parte din
         <translation>Lățime %1 · ciupiți spectrul pentru zoom</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="537"/>
+        <location filename="../qml/pages/ScopePage.qml" line="538"/>
         <source>Frequencies</source>
         <translation>Frecvențe</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="543"/>
+        <location filename="../qml/pages/ScopePage.qml" line="544"/>
         <source>Names</source>
         <translation>Nume</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="550"/>
+        <location filename="../qml/pages/ScopePage.qml" line="551"/>
         <source>Scan</source>
         <translation>Scanare</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="556"/>
+        <location filename="../qml/pages/ScopePage.qml" line="557"/>
         <source>Snap</source>
         <translation>Aliniere</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="568"/>
+        <location filename="../qml/pages/ScopePage.qml" line="569"/>
         <source>Intensity</source>
         <translation>Intensitate</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="579"/>
+        <location filename="../qml/pages/ScopePage.qml" line="580"/>
         <source>Peak
 %1 MHz</source>
         <translation>Vârf
 %1 MHz</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="595"/>
+        <location filename="../qml/pages/ScopePage.qml" line="596"/>
         <source>Source</source>
         <translation>Sursă</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="609"/>
+        <location filename="../qml/pages/ScopePage.qml" line="610"/>
         <source>Band</source>
         <translation>Bandă</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="613"/>
+        <location filename="../qml/pages/ScopePage.qml" line="614"/>
         <source>custom: %1 – %2 MHz · choosing a band jumps back</source>
         <translation>personalizat: %1 – %2 MHz · alegerea unei benzi revine</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="629"/>
+        <location filename="../qml/pages/ScopePage.qml" line="630"/>
         <source>FM radio (internal)</source>
         <translation>Radio FM (intern)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="631"/>
+        <location filename="../qml/pages/ScopePage.qml" line="632"/>
         <source>Built-in short antenna</source>
         <translation>Antenă scurtă încorporată</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="632"/>
+        <location filename="../qml/pages/ScopePage.qml" line="633"/>
         <source>Off: antenna via a headset (if the device supports one)</source>
         <translation>Oprit: antenă prin căști (dacă dispozitivul le acceptă)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="637"/>
+        <location filename="../qml/pages/ScopePage.qml" line="638"/>
         <source>Listen</source>
         <translation>Ascultare</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="643"/>
+        <location filename="../qml/pages/ScopePage.qml" line="644"/>
         <source>Slide a station under the red line or tap it; scanning pauses</source>
         <translation>Glisați un post sub linia roșie sau atingeți-l; scanarea se întrerupe</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="670"/>
+        <location filename="../qml/pages/ScopePage.qml" line="671"/>
         <source>Volume</source>
         <translation>Volum</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="676"/>
+        <location filename="../qml/pages/ScopePage.qml" line="677"/>
         <source>Stations</source>
         <translation>Posturi</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="707"/>
+        <location filename="../qml/pages/ScopePage.qml" line="708"/>
         <source>Level per 100 kHz channel (no IQ), about 50 ms per channel; ● = recognised as a station by the chip. Runs without root, Wi-Fi stays on.</source>
         <translation>Nivel pe canal de 100 kHz (fără IQ), circa 50 ms pe canal; ● = recunoscut de cip ca post. Rulează fără root, Wi-Fi rămâne pornit.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="720"/>
+        <location filename="../qml/pages/ScopePage.qml" line="721"/>
         <source>LNA (IF gain)</source>
         <translation>LNA (amplificare FI)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="728"/>
+        <location filename="../qml/pages/ScopePage.qml" line="729"/>
         <source>VGA (baseband gain)</source>
         <translation>VGA (amplificare bandă de bază)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="733"/>
+        <location filename="../qml/pages/ScopePage.qml" line="734"/>
         <source>RF preamp (+14 dB)</source>
         <translation>Preamplificator RF (+14 dB)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="734"/>
+        <location filename="../qml/pages/ScopePage.qml" line="735"/>
         <source>Only for weak signals; overloads easily</source>
         <translation>Doar pentru semnale slabe; se suprasolicită ușor</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="746"/>
+        <location filename="../qml/pages/ScopePage.qml" line="747"/>
         <source>Panadapter FT-991A</source>
         <translation>Panadaptor FT-991A</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="747"/>
+        <location filename="../qml/pages/ScopePage.qml" line="748"/>
         <source>Tuner fixed on the IF (TSP IFace 2), axis in VFO frequency</source>
         <translation>Tuner fixat pe FI (TSP IFace 2), axă în frecvența VFO</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="754"/>
+        <location filename="../qml/pages/ScopePage.qml" line="755"/>
         <source>VFO frequency (MHz)</source>
         <translation>Frecvență VFO (MHz)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="763"/>
+        <location filename="../qml/pages/ScopePage.qml" line="764"/>
         <source>First IF of the radio (MHz)</source>
         <translation>Prima FI a stației (MHz)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="774"/>
+        <location filename="../qml/pages/ScopePage.qml" line="775"/>
         <source>IF fine correction</source>
         <translation>Corecție fină FI</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="780"/>
+        <location filename="../qml/pages/ScopePage.qml" line="781"/>
         <source>Mirror spectrum</source>
         <translation>Oglindire spectru</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="781"/>
+        <location filename="../qml/pages/ScopePage.qml" line="782"/>
         <source>If signals move the wrong way when turning the VFO</source>
         <translation>Dacă semnalele se mișcă în sens greșit la rotirea VFO</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="787"/>
+        <location filename="../qml/pages/ScopePage.qml" line="788"/>
         <source>Antenna input</source>
         <translation>Intrare antenă</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="800"/>
+        <location filename="../qml/pages/ScopePage.qml" line="801"/>
         <source>LNA state (0 = max. gain)</source>
         <translation>Treaptă LNA (0 = amplificare max.)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="805"/>
+        <location filename="../qml/pages/ScopePage.qml" line="806"/>
         <source>AGC</source>
         <translation>AGC</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="811"/>
+        <location filename="../qml/pages/ScopePage.qml" line="812"/>
         <source>Display</source>
         <translation>Afișare</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="815"/>
+        <location filename="../qml/pages/ScopePage.qml" line="816"/>
         <source>Auto contrast</source>
         <translation>Contrast automat</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="816"/>
+        <location filename="../qml/pages/ScopePage.qml" line="817"/>
         <source>Colour scale follows the noise floor</source>
         <translation>Scala de culori urmează nivelul de zgomot</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ScopePage.qml" line="831"/>
+        <location filename="../qml/pages/ScopePage.qml" line="832"/>
         <source>Noise floor</source>
         <translation>Nivel de zgomot</translation>
     </message>

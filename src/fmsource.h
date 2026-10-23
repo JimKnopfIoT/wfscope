@@ -109,6 +109,7 @@ signals:
 
 private:
     void run();
+    void runDemo();
     void emitStations(const QVector<float> &dbm, const QVector<bool> &valid, int firstCh);
     bool ioc(unsigned long cmd, void *arg);
     bool readRds(QString *name, QString *text, bool *confirmed, quint16 *pi);
@@ -127,6 +128,9 @@ private:
     QVariantList m_stations;
     QString m_rdsName, m_rdsText;
     bool m_labelFreqs = true, m_labelNames = true;
+    // Entwicklerhilfe: WFSCOPE_FM_DEMO=1 zeigt ohne Chip ein Demo-Band (Standort Brandenburger Tor,
+    // Berliner Sender) für Screenshots; nichts davon wird gespeichert
+    const bool m_demo = qEnvironmentVariableIsSet("WFSCOPE_FM_DEMO");
     bool m_autoListenAfterScan = false;   // erster Start: erst ein Durchlauf, dann Ton
     QVector<float> m_lastBand;      // letztes vollständiges Bandbild (gespeichert), Startwert fürs Spektrum
     // Namen und RDS-Statistik je Kanal (10 kHz); Abtast-Thread und Oberfläche, daher m_namesMutex

@@ -5,7 +5,7 @@ Name:       wfscope
 %define _buildhost reproducible-builder
 
 Summary:    Spectrum analyser and waterfall with FM radio, Wi-Fi bands and external SDRs
-Version:    0.2.0
+Version:    0.2.1
 Release:    1
 License:    GPLv3+
 Group:      Qt/Qt
@@ -53,6 +53,12 @@ install -D -m 0755 helper/wfscope-icap %{buildroot}%{_libexecdir}/%{name}/wfscop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 
 %changelog
+* Fri Oct 23 2026 wfscope contributors - 0.2.1-1
+- About page: the FM antenna runs on the USB-C SBU1/SBU2 pins (A8/B8); a
+  cable must carry the SBU wires (fully wired USB 3.x/USB4).
+- Smoother waterfall (interpolated levels, smooth scaling), station names
+  on up to five rows without overlap, landscape layout fixes.
+- Demo mode for screenshots (WFSCOPE_FM_DEMO=1).
 * Fri Oct 23 2026 wfscope contributors - 0.2.0-1
 - Internal FM radio source: band scan, clean audio, RDS station names checked
   by PI code, manual names, last frequency restored on start.

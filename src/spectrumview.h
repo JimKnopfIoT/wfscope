@@ -58,6 +58,7 @@ signals:
     void snapChanged();
 
 private:
+    static int fallWidthFor(int bins);
     void ensureFall(int w);
     void remapFall(int newWidth, double newCenter, double newSpan);
     void updateAutoRange();

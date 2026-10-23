@@ -83,6 +83,7 @@ FmSource::FmSource(QObject *parent) : SpectrumSource(parent)
         }
     }
     connect(this, &FmSource::nameLearned, this, [this](int ch, const QString &name, int pi) {
+        if (m_demo) return;
         FmStationName n;
         n.name = name;
         n.pi = quint16(pi);
@@ -96,6 +97,7 @@ FmSource::FmSource(QObject *parent) : SpectrumSource(parent)
         emit rescanningChanged();
     }, Qt::QueuedConnection);
     connect(this, &FmSource::bandScanned, this, [this](const QVector<float> &dbm) {
+        if (m_demo) return;
         m_lastBand = dbm;
         if (m_autoListenAfterScan) {
             m_autoListenAfterScan = false;
@@ -108,6 +110,7 @@ FmSource::FmSource(QObject *parent) : SpectrumSource(parent)
         QSettings().setValue(QStringLiteral("fm/lastBand"), v.join(','));
     }, Qt::QueuedConnection);
     connect(this, &FmSource::nameForgotten, this, [this](int ch) {
+        if (m_demo) return;
         m_savedNames.remove(ch);
         QSettings().remove(QStringLiteral("fmNames/%1").arg(ch));
     }, Qt::QueuedConnection);
@@ -149,7 +152,7 @@ void FmSource::setListening(bool v)
     m_listenReq = v;
     if (v && !m_running)
         start();
-    if (v)
+    if (v && !m_demo)
         m_audio->start();
     else
         m_audio->stop();
@@ -161,7 +164,8 @@ void FmSource::setListenMHz(double mhz)
     const int ch = qBound(8750, int(qRound(mhz * 100.0)), 10800);   // 10-kHz-Einheiten
     if (ch == m_listenCh) return;
     m_listenCh = ch;
-    QSettings().setValue(QStringLiteral("fm/lastCh"), ch);
+    if (!m_demo)
+        QSettings().setValue(QStringLiteral("fm/lastCh"), ch);
     emit listenChanged();
 }
 
@@ -297,6 +301,34 @@ bool FmSource::readRds(QString *name, QString *text, bool *confirmed, quint16 *p
 void FmSource::start()
 {
     if (m_running) return;
+    if (m_demo) {
+        // Demo: Berliner Sender (Brandenburger Tor); einige ohne Namen, damit „?“ zu sehen ist
+        static const struct { int ch; const char *name; } kDemo[] = {
+            { 8790, nullptr }, { 8880, "rbb88.8" }, { 8960, "DLF Kult" }, { 9140, "BLN RDF" },
+            { 9240, "rbbKultr" }, { 9310, "Inforad." }, { 9360, nullptr }, { 9430, "rs2" },
+            { 9580, "radioeins" }, { 9770, "DLF" }, { 9820, "Paradiso" }, { 9880, "KISS FM" },
+            { 9970, "ANTENNE" }, { 10060, "FluxFM" }, { 10260, "Fritz" }, { 10340, "ENERGY" },
+            { 10460, nullptr }, { 10550, "SPREE" },
+        };
+        m_names.clear();
+        quint16 pi = 0xD301;
+        for (const auto &d : kDemo) {
+            if (!d.name) continue;
+            FmStationName n;
+            n.name = QString::fromLatin1(d.name);
+            n.pi = pi++;
+            n.verified = true;
+            m_names.insert(d.ch, n);
+        }
+        m_listenCh = 9580;                   // radioeins unter der Linie (echte letzte Frequenz bleibt gespeichert)
+        emit planChanged();
+        m_stop = false;
+        setRunning(true);
+        setStatus(tr("Internal FM scanning …"));
+        m_thread = std::thread([this] { runDemo(); });
+        QTimer::singleShot(0, this, [this] { if (m_running && !m_listening) setListening(true); });
+        return;
+    }
     m_names = m_savedNames;                 // vor dem Thread-Start: Thread übernimmt die Namen (ungeprüft)
     for (FmStationName &n : m_names)
         n.verified = false;
@@ -613,6 +645,66 @@ void FmSource::run()
 
 // Senderliste: lokale Spitzen ≥ 8 dB über dem Rauschboden (20-%-Perzentil)
 // oder vom Chip als gültig gemeldet; stärkste zuerst, höchstens 30
+// Demo-Band ohne Chip (WFSCOPE_FM_DEMO): Sender mit Nachbarkanälen über einem verrauschten Boden,
+// leicht schwankend; im Hörmodus Pegel und Name des Senders unter der Linie
+void FmSource::runDemo()
+{
+    const int first = kBandFirstCh, last = kBandLastCh;
+    QVector<float> base((last - first) / kStepCh + 1, -106.0f);
+    static const struct { int ch; float dbm; } kLevels[] = {
+        { 8790, -92 }, { 8880, -78 }, { 8960, -84 }, { 9140, -76 }, { 9240, -82 }, { 9310, -80 },
+        { 9360, -93 }, { 9430, -79 }, { 9580, -72 }, { 9770, -83 }, { 9820, -81 }, { 9880, -77 },
+        { 9970, -86 }, { 10060, -75 }, { 10260, -73 }, { 10340, -80 }, { 10460, -90 }, { 10550, -78 },
+    };
+    for (const auto &l : kLevels) {
+        const int i = (l.ch - first) / kStepCh;
+        for (int k = -3; k <= 3; ++k) {
+            if (i + k < 0 || i + k >= base.size()) continue;
+            const float d = l.dbm - (k == 0 ? 0.0f : 9.0f + 5.0f * (qAbs(k) - 1));
+            base[i + k] = qMax(base[i + k], d);
+        }
+    }
+    QVector<float> dbm = base;
+    QVector<bool> valid(dbm.size(), false);
+    emitStations(base, valid, first);
+    quint32 seed = 12345;
+    auto noise = [&seed] { seed = seed * 1103515245u + 12345u; return ((seed >> 16) & 0x7fff) / 32767.0f; };
+    int gen = -1;
+    while (!m_stop) {
+        for (int i = 0; i < dbm.size(); ++i)
+            dbm[i] = base[i] + (noise() - 0.5f) * 4.0f;
+        int viewFirst, viewLast;
+        {
+            QMutexLocker lock(&m_mutex);
+            gen = m_planGen;
+            viewFirst = m_viewFirstCh;
+            viewLast = m_viewLastCh;
+        }
+        QVector<float> row((viewLast - viewFirst) / kStepCh + 1, -130.0f);
+        for (int i = 0; i < dbm.size(); ++i) {
+            const int j = (first + i * kStepCh - viewFirst) / kStepCh;
+            if (j >= 0 && j < row.size())
+                row[j] = dbm[i];
+        }
+        const double lo = viewFirst / 100.0, hi = viewLast / 100.0;
+        emit rowReady(row, (lo + hi) / 2.0, hi - lo);
+        if (m_listenReq) {
+            const int tuned = m_listenCh;
+            const int i = (tuned - first) / kStepCh;
+            if (i >= 0 && i < dbm.size())
+                emit levelReady(qRound(dbm[i]));
+            QString name;
+            {
+                QMutexLocker lock(&m_namesMutex);
+                name = m_names.value(tuned).name;
+            }
+            emit rdsReady(name, QString());
+        }
+        for (int t = 0; t < 10 && !m_stop && gen == m_planGen; ++t)
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    }
+}
+
 void FmSource::emitStations(const QVector<float> &dbm, const QVector<bool> &valid, int firstCh)
 {
     if (dbm.size() < 3)

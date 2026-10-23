@@ -42,3 +42,6 @@ helper/wfscope-icap
 # Proprietary SDRplay API headers: may be placed here locally to build the
 # SDRplay source, but must never be committed (SDRplay licence).
 3rdparty/sdrplay_api/
+
+# Local pictures — never publish
+media/

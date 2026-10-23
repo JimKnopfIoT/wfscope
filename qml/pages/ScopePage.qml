@@ -446,6 +446,7 @@ Page
                 // Rauschboden; jeweils auf versetzten Zeilen, damit nahe Sender sich nicht überdecken.
                 // Folgt live der Gesten-Vorschau (viewOffset/viewScale wie in SpectrumView).
                 readonly property real labelPx: Theme.fontSizeTiny
+                FontMetrics { id: labelMetrics; font.pixelSize: scope.labelPx; font.bold: true }   // exakte Textbreite fürs Überdeckungs-Prüfen
                 readonly property real lineWidth: Math.max(2, Math.round(Theme.pixelRatio * 2))   // roter Mittelstrich
                 readonly property real traceHeight: height * 0.30     // Spektrumsbereich in SpectrumView
                 function placeLabels(names) {
@@ -462,15 +463,15 @@ Page
                         var t = names ? (st.name ? st.name : "?") : st.mhz.toFixed(1).replace(".", ",")
                         items.push({ mhz: st.mhz, text: t, verified: st.verified, unknown: names && !st.name,
                                      x: (st.mhz - lo) / span * scope.width,
-                                     w: t.length * labelPx * 0.62 + Theme.paddingSmall,
+                                     w: labelMetrics.advanceWidth(t) + Theme.paddingSmall,
                                      // Namen beginnen an der Spitze und laufen nach rechts, Frequenzen zentriert
                                      left: names ? (st.mhz - lo) / span * scope.width + scope.lineWidth * 1.5   // halber Strich + eine Strichbreite Abstand
-                                                 : (st.mhz - lo) / span * scope.width - (t.length * labelPx * 0.62 + Theme.paddingSmall) / 2,
+                                                 : (st.mhz - lo) / span * scope.width - (labelMetrics.advanceWidth(t) + Theme.paddingSmall) / 2,
                                      here: source.listening && Math.abs(st.mhz - source.listenMHz) < 0.05 })
                     }
                     // stärkste Sender zuerst (Liste kommt so sortiert); was in keine Zeile passt,
                     // entfällt bei Frequenzen, Namen kommen notfalls in die letzte Zeile
-                    var placed = [], maxRows = 3
+                    var placed = [], maxRows = names ? 5 : 3   // Namen: mehr Zeilen, damit auch dichte Bänder lesbar bleiben
                     for (var n = 0; n < items.length; ++n) {
                         var it = items[n], row = -1
                         for (var r = 0; r < maxRows && row < 0; ++r) {

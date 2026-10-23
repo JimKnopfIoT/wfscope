@@ -60,7 +60,7 @@ Page {
                 wrapMode: Text.Wrap
                 font.pixelSize: Theme.fontSizeExtraSmall
                 color: Theme.secondaryColor
-                text: qsTr("• A USB-C cable plugged into the phone acts as the antenna. It has to be a fully wired cable (USB 3.x/USB4, e.g. 40 Gbps); simple charging and USB 2.0 cables do not work. Tested: 1.3 m USB4 cable with e-marker.\n• Let the cable hang straight; coiled up it receives much worse.\n• Leave the other end free: a connected laptop adds a lot of noise.\n• Without such a cable reception is very weak; station names (RDS) need a good signal.")
+                text: qsTr("• A USB-C cable plugged into the phone acts as the antenna. The antenna signal runs on the SBU1/SBU2 pins (A8/B8), so the cable must carry the SBU wires: fully wired USB 3.x/USB4 cables do (e.g. 40 Gbps), simple charging and USB 2.0 cables do not. Tested: 1.3 m USB4 cable with e-marker.\n• Let the cable hang straight; coiled up it receives much worse.\n• Leave the other end free: a connected laptop adds a lot of noise.\n• Without such a cable reception is very weak; station names (RDS) need a good signal.")
             }
 
             SectionHeader { text: qsTr("Warning") }
