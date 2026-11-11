@@ -172,7 +172,7 @@ versions. How you use it is your responsibility.
 
 ---
 
-AI assisted development
+LLM assisted development
 
 ## License
 
